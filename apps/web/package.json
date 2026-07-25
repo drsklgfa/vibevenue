@@ -4,5 +4,5 @@
   "private": true,
   "scripts": {"dev": "next dev", "build": "next build --turbopack", "start": "node ../../scripts/serve-static.mjs out", "typecheck": "tsc --noEmit", "test": "vitest run", "lint": "eslint . --max-warnings=0"},
   "dependencies": {"@vibevenue/contracts": "file:../../packages/contracts", "clsx": "2.1.1", "idb": "8.0.3", "lucide-react": "1.25.0", "next": "16.2.10", "qrcode.react": "4.2.0", "react": "19.2.7", "react-dom": "19.2.7", "sharp": "0.35.3", "socket.io-client": "4.8.3"},
-  "devDependencies": {"@tailwindcss/postcss": "4.3.3", "@types/node": "24.3.0", "@types/react": "19.2.17", "@types/react-dom": "19.2.3", "eslint": "9.39.1", "eslint-config-next": "16.2.10", "jsdom": "29.1.1", "postcss": "8.5.21", "tailwindcss": "4.3.3", "typescript": "5.9.3", "vitest": "4.1.10"}
+  "devDependencies": {"@tailwindcss/postcss": "4.3.3", "@types/node": "26.1.1", "@types/react": "19.2.17", "@types/react-dom": "19.2.3", "eslint": "9.39.1", "eslint-config-next": "16.2.10", "jsdom": "29.1.1", "postcss": "8.5.21", "tailwindcss": "4.3.3", "typescript": "5.9.3", "vitest": "4.1.10"}
 }
