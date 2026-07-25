@@ -1,0 +1,18 @@
+VIBEVENUE — ENTREGA FINAL CANDIDATA
+
+1. Comece por FINAL_STATUS.md.
+2. Não envie secrets nesta conversa.
+3. Suba o conteúdo em repositório privado.
+4. Configure GitHub e infraestrutura conforme docs/operations/.
+5. Só use clientes/dados reais depois do workflow quality verde, restore e pentest.
+
+ARQUIVOS PRINCIPAIS
+- README.md
+- FINAL_STATUS.md
+- SECURITY.md
+- VALIDATION.md
+- docs/operations/PRODUCTION_DEPLOYMENT.md
+- docs/operations/GO_LIVE_OWNER_CHECKLIST.md
+- docs/operations/OWNER_ACTIONS.md
+- docs/security/RISK_REGISTER.md
+- docs/security/CONTROL_MATRIX.md

@@ -1,0 +1,33 @@
+VIBEVENUE — CHECKPOINT 03 — REGISTRO DE VALIDAÇÃO
+Data: 23/07/2026
+
+APROVADO:
+- npm run check:offline
+  - lockfile: 813 tarballs públicos; sharp >= 0.35.0
+  - fonte: 37 arquivos TS/TSX
+  - semântica offline: contratos, aliases e tipos internos
+  - Render Blueprint
+- sintaxe dos 9 scripts .mjs
+- 39 rotas HTTP identificadas
+- 61 instruções de migração identificadas
+- 14 casos de teste escritos em 3 arquivos
+- cookie administrativo HttpOnly e configuração comercial segura
+- bloqueio progressivo de login e gerenciamento de sessões
+- ausência de token administrativo persistido no frontend
+
+TENTATIVA DE INSTALAÇÃO:
+- npm ci foi executado com timeout e retries limitados;
+- o gateway de pacotes respondeu HTTP 503 ao baixar zod-validation-error-4.0.2.tgz;
+- nenhum node_modules parcial foi mantido no pacote.
+
+PENDENTE ANTES DA HOMOLOGAÇÃO FINAL:
+- npm ci completo
+- build
+- typecheck oficial
+- Vitest
+- ESLint
+- npm audit
+- smoke PostgreSQL/Redis/S3
+- backup e restauração reais
+
+Este checkpoint é um ZIP completo de recuperação, não a versão final homologada.

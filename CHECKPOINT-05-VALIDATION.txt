@@ -1,0 +1,24 @@
+VIBEVENUE — CHECKPOINT 05 — REGISTRO DE VALIDAÇÃO
+Data: 23/07/2026
+
+APROVADO:
+- npm run check:offline
+- 45 arquivos TypeScript/TSX
+- 49 declarações de rotas HTTP
+- 92 instruções de migração
+- 24 casos de teste escritos em 6 arquivos
+- 12 scripts .mjs aprovados por sintaxe
+- planos, limites, autogestão, consentimento e avisos verificados estruturalmente
+- Blueprint com health check /ready
+
+INSTALAÇÃO:
+- npm ci avançou parcialmente;
+- o gateway retornou HTTP 503 em zod-validation-error-4.0.2.tgz;
+- nenhum node_modules parcial foi preservado.
+
+BACKUP REAL:
+- scripts de dump e restore continuam aprovados por sintaxe;
+- pg_dump, pg_restore e psql não estão instalados neste ambiente;
+- restauração real em banco separado continua obrigatória.
+
+Este é um ZIP completo de recuperação, não a versão final homologada.

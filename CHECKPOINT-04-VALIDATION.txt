@@ -1,0 +1,24 @@
+VIBEVENUE — CHECKPOINT 04 — REGISTRO DE VALIDAÇÃO
+Data: 23/07/2026
+
+APROVADO:
+- npm run check:offline
+- 42 arquivos TypeScript/TSX
+- 43 declarações de rotas HTTP
+- 76 instruções de migração
+- 19 casos de teste escritos em 5 arquivos
+- 12 scripts .mjs aprovados por sintaxe
+- cobrança, auditoria, correlação, retenção e continuidade verificadas estruturalmente
+- Blueprint com health check /ready
+
+INSTALAÇÃO:
+- npm ci tentou baixar as dependências;
+- o gateway retornou HTTP 503 em diversos tarballs públicos;
+- nenhum node_modules parcial foi preservado.
+
+BACKUP REAL:
+- scripts de dump e restore revisados e aprovados por sintaxe;
+- pg_dump, pg_restore e psql não estão instalados neste ambiente;
+- restauração real em banco separado continua obrigatória.
+
+Este é um ZIP completo de recuperação, não a versão final homologada.

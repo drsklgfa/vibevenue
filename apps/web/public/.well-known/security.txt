@@ -1,0 +1,6 @@
+# MODELO: substitua os contatos antes do primeiro cliente real.
+Contact: mailto:security@example.invalid
+Preferred-Languages: pt-BR, en
+Policy: https://example.invalid/security
+Canonical: https://example.invalid/.well-known/security.txt
+Expires: 2027-07-01T00:00:00Z

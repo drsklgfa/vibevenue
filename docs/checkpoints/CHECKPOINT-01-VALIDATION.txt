@@ -1,0 +1,12 @@
+VibeVenue Checkpoint Comercial 01 - validações locais
+Data: 2026-07-22
+
+Lockfile aprovado: 813 tarballs públicos e sharp >= 0.35.0.
+Fonte aprovada: 34 arquivos TS/TSX, rotas, tabelas, PWA, CSS e segurança estrutural.
+Blueprint VibeVenue aprovado.
+Sintaxe client-admin.mjs aprovada.
+Sintaxe build-all.mjs aprovada.
+Sintaxe smoke-production.mjs aprovada.
+Sintaxe verify-artifacts.mjs aprovada.
+
+Instalação/build/testes completos: BLOQUEADOS nesta sessão por falha de resolução DNS do registry.npmjs.org.

@@ -1,0 +1,192 @@
+# yaml-language-server: $schema=https://render.com/schema/render.yaml.json
+# Template comercial. Antes de criar os recursos, revise região, nomes, planos e jurisdição dos dados.
+services:
+  - type: keyvalue
+    name: vibevenue-redis-production
+    plan: starter
+    region: oregon
+    ipAllowList: []
+    maxmemoryPolicy: noeviction
+
+  - type: web
+    name: vibevenue-api-production
+    runtime: node
+    plan: starter
+    region: oregon
+    branch: main
+    autoDeployTrigger: checksPass
+    buildCommand: npm ci --include=dev --no-audit --no-fund && npm run validate:lockfile && npm run build:server && npm run validate:render && npm run verify:artifacts -- server
+    preDeployCommand: node apps/server/dist/migrate-cli.js
+    startCommand: node apps/server/dist/index.js
+    healthCheckPath: /ready
+    maxShutdownDelaySeconds: 60
+    envVars:
+      - key: NODE_VERSION
+        value: 22.16.0
+      - key: NODE_ENV
+        value: production
+      - key: DEPLOYMENT_MODE
+        value: commercial
+      - key: APP_RELEASE
+        value: render-production
+      - key: WEB_ORIGINS
+        fromService:
+          type: web
+          name: vibevenue-web-production
+          envVarKey: RENDER_EXTERNAL_URL
+      - key: APP_PUBLIC_URL
+        fromService:
+          type: web
+          name: vibevenue-web-production
+          envVarKey: RENDER_EXTERNAL_URL
+      - key: DATABASE_URL
+        fromDatabase:
+          name: vibevenue-db-production
+          property: connectionString
+      - key: DATABASE_SSL
+        value: "true"
+      - key: REDIS_URL
+        fromService:
+          type: keyvalue
+          name: vibevenue-redis-production
+          property: connectionString
+      - key: REQUIRE_CLOUD_SERVICES
+        value: "true"
+      - key: DEMO_MODE
+        value: "false"
+      - key: AUTO_MIGRATE
+        value: "false"
+      - key: AUTO_SEED_DEMO
+        value: "false"
+      - key: ADMIN_SESSION_ABSOLUTE_HOURS
+        value: "24"
+      - key: PLATFORM_SESSION_ABSOLUTE_HOURS
+        value: "8"
+      - key: ADMIN_SESSION_IDLE_MINUTES
+        value: "60"
+      - key: PLATFORM_SESSION_IDLE_MINUTES
+        value: "30"
+      - key: SESSION_TOUCH_MINUTES
+        value: "5"
+      - key: GUEST_SESSION_TTL_HOURS
+        value: "12"
+      - key: MAINTENANCE_INTERVAL_MINUTES
+        value: "60"
+      - key: BILLING_GRACE_DAYS
+        value: "5"
+      - key: EXPIRED_GUEST_RETENTION_DAYS
+        value: "30"
+      - key: AUDIT_RETENTION_DAYS
+        value: "730"
+      - key: AUDIT_IP_SALT
+        sync: false
+      - key: TOKEN_HASH_PEPPER
+        sync: false
+      - key: APP_ENCRYPTION_KEY
+        sync: false
+      - key: BACKUP_ENCRYPTION_KEY
+        sync: false
+      - key: BACKUP_REQUIRE_ENCRYPTION
+        value: "true"
+      - key: MFA_ISSUER
+        value: VibeVenue
+      - key: MFA_REQUIRED_ROLES
+        value: owner,manager
+      - key: MFA_CHALLENGE_MINUTES
+        value: "10"
+      - key: MFA_MAX_ATTEMPTS
+        value: "5"
+      - key: STEP_UP_MINUTES
+        value: "10"
+      - key: DISTRIBUTED_RATE_LIMIT
+        value: "true"
+      - key: MEDIA_SCAN_MODE
+        value: required
+      - key: CLAMAV_HOST
+        sync: false
+      - key: CLAMAV_PORT
+        value: "3310"
+      - key: MEDIA_MAX_BYTES
+        value: "8388608"
+      - key: MEDIA_MAX_PIXELS
+        value: "40000000"
+      - key: MEDIA_MAX_DIMENSION
+        value: "1600"
+      - key: EMAIL_PROVIDER
+        value: resend
+      - key: RESEND_API_KEY
+        sync: false
+      - key: EMAIL_FROM
+        sync: false
+      - key: SECURITY_CONTACT_EMAIL
+        sync: false
+      - key: PASSWORD_RESET_MINUTES
+        value: "30"
+      - key: READ_ONLY_MODE
+        value: "false"
+      - key: TRUST_PROXY_HOPS
+        value: "1"
+      - key: LOGIN_MAX_ATTEMPTS
+        value: "5"
+      - key: LOGIN_LOCK_MINUTES
+        value: "15"
+      - key: AUTH_COOKIE_SECURE
+        value: "true"
+      - key: AUTH_COOKIE_SAME_SITE
+        value: none
+      - key: AUTH_COOKIE_DOMAIN
+        sync: false
+      - key: RETURN_ADMIN_TOKEN
+        value: "false"
+      - key: STORAGE_DRIVER
+        value: s3
+      - key: OBJECT_STORAGE_ENDPOINT
+        sync: false
+      - key: OBJECT_STORAGE_ACCESS_KEY_ID
+        sync: false
+      - key: OBJECT_STORAGE_SECRET_ACCESS_KEY
+        sync: false
+      - key: OBJECT_STORAGE_BUCKET
+        sync: false
+      - key: OBJECT_STORAGE_REGION
+        sync: false
+      - key: OBJECT_STORAGE_FORCE_PATH_STYLE
+        value: "false"
+
+  - type: web
+    name: vibevenue-web-production
+    runtime: node
+    plan: starter
+    region: oregon
+    branch: main
+    autoDeployTrigger: checksPass
+    buildCommand: npm ci --include=dev --no-audit --no-fund && npm run validate:lockfile && npm run build:web && npm run verify:artifacts -- web
+    startCommand: node scripts/serve-static.mjs apps/web/out
+    healthCheckPath: /healthz
+    maxShutdownDelaySeconds: 30
+    envVars:
+      - key: NODE_VERSION
+        value: 22.16.0
+      - key: NEXT_TELEMETRY_DISABLED
+        value: "1"
+      - key: NEXT_PUBLIC_API_URL
+        fromService:
+          type: web
+          name: vibevenue-api-production
+          envVarKey: RENDER_EXTERNAL_URL
+      - key: NEXT_PUBLIC_REALTIME_URL
+        fromService:
+          type: web
+          name: vibevenue-api-production
+          envVarKey: RENDER_EXTERNAL_URL
+
+databases:
+  - name: vibevenue-db-production
+    plan: basic-1gb
+    region: oregon
+    postgresMajorVersion: "17"
+    databaseName: vibevenue
+    user: vibevenue
+    diskSizeGB: 15
+    storageAutoscalingEnabled: true
+    ipAllowList: []

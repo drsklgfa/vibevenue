@@ -1,0 +1,3 @@
+import { spawnSync } from "node:child_process";import { resolve } from "node:path";import process from "node:process";
+const root=resolve(new URL("..",import.meta.url).pathname);function run(label,cmd,args,cwd=root){console.log(`\n[build] ${label}`);const r=spawnSync(cmd,args,{cwd,stdio:"inherit",env:{...process.env,NEXT_TELEMETRY_DISABLED:"1"},timeout:240000});if(r.error)throw r.error;if(r.status!==0)process.exit(r.status??1)}
+run("contratos",process.execPath,["node_modules/typescript/bin/tsc","-p","packages/contracts/tsconfig.json"]);run("backend",process.execPath,["node_modules/typescript/bin/tsc","-p","apps/server/tsconfig.json"]);run("frontend",process.execPath,["../../node_modules/next/dist/bin/next","build","--turbopack"],resolve(root,"apps/web"));

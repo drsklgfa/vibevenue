@@ -1,0 +1,64 @@
+{
+  "name": "vibevenue",
+  "version": "1.0.0",
+  "private": true,
+  "description": "VibeVenue - plataforma SaaS multiestabelecimentos para experiências interativas, música, atendimento, fidelidade, eventos e métricas.",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "engines": {
+    "node": "22.16.x",
+    "npm": "10.x"
+  },
+  "scripts": {
+    "dev": "concurrently -k -n SERVER,WEB -c auto \"npm run dev -w @vibevenue/server\" \"npm run dev -w @vibevenue/web\"",
+    "build": "node scripts/build-all.mjs",
+    "test": "npm run test -w @vibevenue/contracts && npm run test -w @vibevenue/server && npm run test -w @vibevenue/web",
+    "typecheck": "npm run typecheck -w @vibevenue/contracts && npm run typecheck -w @vibevenue/server && npm run typecheck -w @vibevenue/web",
+    "lint": "npm run lint -w @vibevenue/server && npm run lint -w @vibevenue/web",
+    "check": "npm run validate:lockfile && npm run validate:source && npm run build && npm run typecheck && npm run test && npm run lint && npm run validate:render && npm run verify:artifacts",
+    "build:server": "npm run build -w @vibevenue/contracts && npm run build -w @vibevenue/server",
+    "build:web": "npm run build -w @vibevenue/contracts && npm run build -w @vibevenue/web",
+    "validate:render": "node scripts/validate-render.mjs",
+    "verify:artifacts": "node scripts/verify-artifacts.mjs",
+    "validate:lockfile": "node scripts/validate-lockfile.mjs",
+    "smoke": "node scripts/smoke-production.mjs",
+    "validate:source": "node scripts/validate-source.mjs",
+    "client:create": "node scripts/client-admin.mjs create",
+    "client:status": "node scripts/client-admin.mjs status",
+    "client:list": "node scripts/client-admin.mjs list",
+    "user:reset-password": "node scripts/client-admin.mjs reset-password",
+    "validate:semantic-offline": "node scripts/validate-semantic-offline.mjs",
+    "check:offline": "npm run validate:lockfile && npm run validate:source && npm run validate:semantic-offline && npm run validate:render",
+    "invoice:create": "node scripts/client-admin.mjs invoice-create",
+    "invoice:pay": "node scripts/client-admin.mjs invoice-pay",
+    "invoice:void": "node scripts/client-admin.mjs invoice-void",
+    "invoice:list": "node scripts/client-admin.mjs invoice-list",
+    "backup:create": "node scripts/database-backup.mjs",
+    "backup:restore": "node scripts/database-restore.mjs",
+    "data:export": "node scripts/data-admin.mjs export-org",
+    "data:delete-organization": "node scripts/data-admin.mjs delete-org",
+    "platform:bootstrap": "node scripts/platform-bootstrap.mjs",
+    "security:generate-secrets": "node scripts/generate-secrets.mjs",
+    "security:verify-environment": "node scripts/verify-environment.mjs",
+    "security:sbom": "node scripts/generate-sbom.mjs",
+    "security:scan-repository": "node scripts/scan-repository.mjs",
+    "security:emergency": "node scripts/security-emergency.mjs",
+    "security:check-staging": "node scripts/staging-security-check.mjs",
+    "security:rotate-encryption-key": "node apps/server/dist/rotate-encryption-key-cli.js",
+    "security:test-static": "node scripts/test-static-security.mjs",
+    "security:test-backup-crypto": "node scripts/test-backup-crypto.mjs"
+  },
+  "devDependencies": {
+    "concurrently": "9.2.1",
+    "typescript": "5.9.3"
+  },
+  "overrides": {
+    "next@16.2.10": {
+      "postcss": "8.5.21"
+    },
+    "sharp": "0.35.3"
+  },
+  "packageManager": "npm@10.8.2"
+}

@@ -1,0 +1,38 @@
+VIBEVENUE — CANDIDATO FINAL SEGURO 1.0.0
+Data: 25/07/2026
+
+VALIDADO NESTE AMBIENTE
+- lockfile: 813 tarballs públicos conferidos
+- fonte: validada estruturalmente
+- semântica offline: contratos e aliases internos aprovados
+- Blueprints demo/staging/produção: aprovados
+- varredura de secrets/arquivos proibidos: aprovada
+- CSP e servidor estático: teste sintético aprovado
+- backup AES-256-GCM: round-trip e chave incorreta aprovados
+- secrets: geração 0600 e verificação comercial sintética aprovadas
+- JSON/YAML: parsing aprovado
+- scripts Node: sintaxe aprovada
+
+MÉTRICAS DO CONTEÚDO ANTES DO MANIFESTO FINAL
+- 197 arquivos de pacote
+- 64 arquivos TypeScript/TSX totais
+- 66 declarações de rotas HTTP
+- 114 instruções de migração identificadas
+- 53 casos de teste escritos
+- 11 arquivos de teste
+- 22 scripts Node
+
+NÃO EXECUTADO LOCALMENTE
+- npm ci, build, typecheck oficial, Vitest, ESLint, npm audit e smoke
+- motivo: gateway de pacotes retornou repetidos HTTP 503
+- a instalação parcial foi removida
+- o workflow quality está configurado para executar tudo com PostgreSQL e Redis reais
+
+HOMOLOGAÇÃO EXTERNA OBRIGATÓRIA
+- GitHub CI verde
+- staging/produção privados
+- S3, ClamAV, Resend, PostgreSQL e Redis reais
+- backup/restauração real
+- monitoramento/alertas
+- aprovação jurídica
+- pentest e reteste

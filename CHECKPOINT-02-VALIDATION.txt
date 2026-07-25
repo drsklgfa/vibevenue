@@ -1,0 +1,30 @@
+VIBEVENUE — CHECKPOINT 02 — REGISTRO DE VALIDAÇÃO
+Data: 22/07/2026
+
+APROVADO:
+- npm run check:offline
+  - lockfile: 813 tarballs públicos; sharp >= 0.35.0
+  - fonte: 35 arquivos TS/TSX
+  - semântica offline: contratos, aliases e tipos internos
+  - Render Blueprint
+- sintaxe de todos os scripts .mjs
+- 36 rotas HTTP identificadas
+- 56 instruções de migração identificadas
+- 11 casos de teste escritos
+
+TENTATIVA DE INSTALAÇÃO:
+- npm ci foi executado com cache limpo e sem retries;
+- o gateway de pacotes respondeu HTTP 503 ao baixar dependência;
+- nenhum node_modules parcial foi mantido no pacote.
+
+PENDENTE ANTES DA HOMOLOGAÇÃO FINAL:
+- npm ci completo
+- build
+- typecheck oficial
+- Vitest
+- ESLint
+- npm audit
+- smoke PostgreSQL/Redis/S3
+- backup e restauração reais
+
+Este checkpoint é um ZIP completo de recuperação, não a versão final homologada.

@@ -1,0 +1,24 @@
+VIBEVENUE — CHECKPOINT 06 — REGISTRO DE VALIDAÇÃO
+Data: 23/07/2026
+
+APROVADO:
+- npm run check:offline
+- 48 arquivos TypeScript/TSX
+- 58 declarações de rotas HTTP
+- 94 instruções de migração
+- 26 casos de teste escritos em 7 arquivos
+- 13 scripts .mjs aprovados por sintaxe
+- console da plataforma, isolamento interno, provisionamento, planos, faturas e recuperação verificados estruturalmente
+- Blueprint com health check /ready
+
+INSTALAÇÃO:
+- npm ci foi iniciado, mas permaneceu bloqueado sem concluir downloads;
+- registry.npmjs.org não pôde ser resolvido por DNS neste ambiente;
+- o processo preso foi encerrado e nenhum node_modules parcial foi preservado.
+
+BACKUP REAL:
+- scripts de dump e restore continuam aprovados por sintaxe;
+- pg_dump, pg_restore e psql não estão instalados neste ambiente;
+- bootstrap, migrações e restauração real em banco separado continuam obrigatórios.
+
+Este é um ZIP completo de recuperação, não a versão final homologada.

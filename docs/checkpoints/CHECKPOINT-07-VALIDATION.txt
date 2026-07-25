@@ -1,0 +1,31 @@
+VIBEVENUE — CHECKPOINT DE SEGURANÇA 07 — REGISTRO DE VALIDAÇÃO
+Data: 24/07/2026
+
+APROVADO:
+- npm run check:offline
+- 51 arquivos TypeScript/TSX no validador estrutural
+- 58 declarações de rotas HTTP preservadas
+- 32 casos de teste escritos em 8 arquivos
+- 15 scripts .mjs aprovados por sintaxe
+- geração de secrets em arquivo 0600, sem impressão dos valores
+- verificação secrets-only e comercial com valores sintéticos
+- hash scrypt versionado, custo fixo e migração de legado
+- expiração absoluta/inativa e sessão mais curta para a plataforma
+- token do visitante removido do localStorage
+- registro do service worker sem script inline
+- threat model, riscos, controles, dados, privacidade e ações do proprietário
+- Blueprint Render com variáveis de sessão e secrets
+
+INSTALAÇÃO:
+- npm ci foi iniciado novamente;
+- não produziu uma árvore completa ou saída confiável dentro da janela do ambiente;
+- qualquer node_modules parcial foi removido antes do pacote.
+
+PENDENTE ANTES DA HOMOLOGAÇÃO FINAL:
+- npm ci completo, build, typecheck, Vitest, ESLint e npm audit
+- PostgreSQL/Redis/S3 reais
+- MFA/passkeys, step-up e testes cross-tenant
+- quarentena/scan de uploads e rate limit distribuído
+- backup/restauração real, staging, monitoramento e pentest independente
+
+Este é um ZIP completo de segurança e recuperação, não a versão final homologada.

@@ -1,0 +1,46 @@
+{
+  "project": "VibeVenue",
+  "release": "1.0.0-secure-candidate",
+  "date": "2026-07-25",
+  "kind": "complete-source-release-candidate",
+  "baseCheckpoint": "security-07",
+  "securityBaseline": "AI Secure Project Blueprint",
+  "implementationComplete": true,
+  "productionApproved": false,
+  "status": "final-candidate-awaiting-external-homologation",
+  "localValidated": [
+    "lockfile-origin",
+    "offline-source-and-semantic-validation",
+    "demo-staging-production-blueprints",
+    "repository-secret-scan",
+    "static-server-csp-test",
+    "backup-aes-gcm-roundtrip",
+    "synthetic-secret-generation-and-commercial-env-verification",
+    "script-syntax",
+    "manifest-and-clean-extraction"
+  ],
+  "configuredForGitHubCI": [
+    "immutable-install",
+    "postgres-and-redis-integration",
+    "build",
+    "typecheck",
+    "vitest",
+    "eslint",
+    "npm-production-audit",
+    "cross-tenant-http-tests",
+    "smoke",
+    "codeql",
+    "dependency-review",
+    "sbom",
+    "release-provenance"
+  ],
+  "externalGoLiveRequirements": [
+    "green-quality-workflow",
+    "private-persistent-infrastructure",
+    "real-s3-clamav-email-tests",
+    "encrypted-backup-and-restore-exercise",
+    "monitoring-alerts",
+    "legal-approval",
+    "independent-pentest-and-retest"
+  ]
+}

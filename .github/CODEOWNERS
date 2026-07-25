@@ -1,0 +1,9 @@
+# Substitua @OWNER_GITHUB pelo usuário ou time real antes de proteger a branch.
+* @OWNER_GITHUB
+/apps/server/src/auth.ts @OWNER_GITHUB
+/apps/server/src/security.ts @OWNER_GITHUB
+/apps/server/src/platform-admin.ts @OWNER_GITHUB
+/apps/server/src/migrations.ts @OWNER_GITHUB
+/render.yaml @OWNER_GITHUB
+/.github/ @OWNER_GITHUB
+/docs/security/ @OWNER_GITHUB
