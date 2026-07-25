@@ -34,3 +34,10 @@ O gateway externo de pacotes respondeu `HTTP 503`, impedindo `npm ci` e, por con
 6. criar produção com `render.production.example.yaml`;
 7. executar pentest e checklist de go-live;
 8. iniciar piloto gradual.
+
+## GitHub Pages e correção de CI
+
+- Build TypeScript corrigido para `exactOptionalPropertyTypes`.
+- Workflow `portfolio-pages` incluído para `https://drsklgfa.github.io/vibevenue/`.
+- O Pages executa uma demonstração visual sem infraestrutura externa e sem dados reais.
+- A confirmação final depende dos workflows executados após o próximo push no GitHub.

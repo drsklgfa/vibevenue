@@ -1,3 +1,10 @@
+## 1.0.0-ci-pages-fix - 2026-07-25
+
+- Corrige incompatibilidades de `exactOptionalPropertyTypes` detectadas pelo build real do GitHub Actions.
+- Adiciona GitHub Pages com export estático em `/vibevenue`.
+- Adiciona modo de portfólio navegável com prévias estáticas de painel, cliente e TV.
+- Torna manifesto, ícones, navegação e service worker compatíveis com `basePath`.
+
 
 ## 1.0.1-ci-fix — 2026-07-25
 

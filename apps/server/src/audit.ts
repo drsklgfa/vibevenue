@@ -35,9 +35,9 @@ export async function recordAudit(input: {
 export async function listAuditLogs(input: {
   organizationId: string;
   limit: number;
-  beforeId?: number;
-  action?: string;
-  entityType?: string;
+  beforeId?: number | undefined;
+  action?: string | undefined;
+  entityType?: string | undefined;
 }): Promise<{ items: AuditLogEntry[]; nextBeforeId: number | null }> {
   const params: unknown[] = [input.organizationId];
   const where = ["a.organization_id=$1"];

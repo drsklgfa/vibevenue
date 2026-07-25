@@ -267,7 +267,7 @@ export async function requireAdmin(request: AdminRequest, response: Response, ne
   request.accessToken = token;
   request.accessSource = source;
   if (identity.mustChangePassword) {
-    const path = request.originalUrl.split("?")[0];
+    const path = request.originalUrl.split("?")[0] ?? request.originalUrl;
     const allowed = new Set(["/api/auth/me", "/api/auth/change-password", "/api/auth/logout", "/api/auth/mfa/status"]);
     if (!allowed.has(path)) return response.status(403).json({ ok: false, code: "PASSWORD_CHANGE_REQUIRED", message: "Altere a senha temporária antes de continuar." });
   }

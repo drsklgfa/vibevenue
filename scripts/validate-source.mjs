@@ -39,11 +39,11 @@ for (const file of files) {
 }
 
 const requiredFiles = [
-  "render.yaml", ".github/workflows/ci.yml", "apps/web/public/sw.js", "apps/web/app/manifest.ts",
+  "render.yaml", ".github/workflows/ci.yml", ".github/workflows/pages.yml", "apps/web/public/sw.js", "apps/web/app/manifest.ts",
   "apps/server/src/migrations.ts", "apps/server/src/http.ts", "apps/server/src/auth.ts", "apps/server/src/cookies.ts", "apps/server/src/commercial.ts", "apps/server/src/maintenance.ts", "apps/server/src/audit.ts", "apps/server/src/billing.ts", "apps/server/src/observability.ts", "apps/server/src/plans.ts", "apps/server/src/notifications.ts", "apps/server/src/platform-admin.ts", "apps/server/src/platform-admin.test.ts", "apps/server/src/health.test.ts", "apps/server/src/plans.test.ts", "apps/web/components/platform-console.tsx", "packages/contracts/src/index.ts",
   "scripts/client-admin.mjs", "scripts/data-admin.mjs", "scripts/database-backup.mjs", "scripts/database-restore.mjs", "scripts/platform-bootstrap.mjs", "scripts/generate-secrets.mjs", "scripts/verify-environment.mjs", "scripts/validate-semantic-offline.mjs",
   "CONTRIBUTING.md", ".github/CODEOWNERS", ".github/pull_request_template.md", "apps/web/public/.well-known/security.txt",
-  "docs/COMMERCIAL_SETUP.md", "docs/PLATFORM_ADMIN.md", "docs/BACKUP_RESTORE.md", "docs/security/SECURITY_BASELINE.md", "docs/security/TECHNICAL_INVENTORY.md", "docs/security/DATA_CLASSIFICATION.md", "docs/security/DATA_PROCESSING_INVENTORY.md", "docs/security/DATA_FLOW.md", "docs/security/TRUST_BOUNDARIES.md", "docs/security/THREAT_MODEL.md", "docs/security/ABUSE_CASES.md", "docs/security/GAP_ANALYSIS.md", "docs/security/RISK_REGISTER.md", "docs/security/CONTROL_MATRIX.md", "docs/security/AUTHORIZATION_MATRIX.md", "docs/security/TENANT_ISOLATION.md", "docs/security/CRYPTOGRAPHIC_INVENTORY.md", "docs/security/SECRETS_INVENTORY_TEMPLATE.md", "docs/security/PENTEST_SCOPE.md", "docs/security/GO_LIVE_SECURITY_CHECKLIST.md", "docs/operations/OWNER_ACTIONS.md", "docs/operations/ROLLBACK.md", "docs/operations/INCIDENT_RESPONSE.md", "docs/privacy/RETENTION_SCHEDULE.md", "CHANGELOG.md", "STATUS.md", "CHECKPOINT.json"
+  "docs/COMMERCIAL_SETUP.md", "docs/PLATFORM_ADMIN.md", "docs/BACKUP_RESTORE.md", "docs/GITHUB_PAGES.md", "docs/security/SECURITY_BASELINE.md", "docs/security/TECHNICAL_INVENTORY.md", "docs/security/DATA_CLASSIFICATION.md", "docs/security/DATA_PROCESSING_INVENTORY.md", "docs/security/DATA_FLOW.md", "docs/security/TRUST_BOUNDARIES.md", "docs/security/THREAT_MODEL.md", "docs/security/ABUSE_CASES.md", "docs/security/GAP_ANALYSIS.md", "docs/security/RISK_REGISTER.md", "docs/security/CONTROL_MATRIX.md", "docs/security/AUTHORIZATION_MATRIX.md", "docs/security/TENANT_ISOLATION.md", "docs/security/CRYPTOGRAPHIC_INVENTORY.md", "docs/security/SECRETS_INVENTORY_TEMPLATE.md", "docs/security/PENTEST_SCOPE.md", "docs/security/GO_LIVE_SECURITY_CHECKLIST.md", "docs/operations/OWNER_ACTIONS.md", "docs/operations/ROLLBACK.md", "docs/operations/INCIDENT_RESPONSE.md", "docs/privacy/RETENTION_SCHEDULE.md", "CHANGELOG.md", "STATUS.md", "CHECKPOINT.json"
 ];
 for (const relative of requiredFiles) if (!fs.existsSync(path.join(root, relative))) { console.error(`Arquivo obrigatório ausente: ${relative}`); failures += 1; }
 
@@ -83,6 +83,11 @@ const adminDashboard = fs.readFileSync(path.join(root, "apps/web/components/admi
 if (!adminDashboard.includes("PasswordChangeGate") || !adminDashboard.includes("localDateTimeToIso") || !adminDashboard.includes("activeTab")) { console.error("Onboarding de senha, conversão de datas ou fallback de aba ausente."); failures += 1; }
 if (!http.includes("deleteImage(stored.key)") || !http.includes("clearMediaStorage")) { console.error("Compensação e descarte de mídia ausentes."); failures += 1; }
 
+
+const pagesWorkflow = fs.readFileSync(path.join(root, ".github/workflows/pages.yml"), "utf8");
+if (!pagesWorkflow.includes("NEXT_PUBLIC_BASE_PATH: /vibevenue") || !pagesWorkflow.includes("actions/deploy-pages@") || !pagesWorkflow.includes("apps/web/out")) { console.error("Workflow visual do GitHub Pages incompleto."); failures += 1; }
+const basePathSource = fs.readFileSync(path.join(root, "apps/web/lib/base-path.ts"), "utf8");
+if (!basePathSource.includes("NEXT_PUBLIC_PORTFOLIO_MODE") || !basePathSource.includes("NEXT_PUBLIC_BASE_PATH")) { console.error("Modo portfólio ou basePath do GitHub Pages ausente."); failures += 1; }
 
 const webSource = ["apps/web/components/app-shell.tsx", "apps/web/components/admin-login.tsx", "apps/web/components/admin-dashboard.tsx", "apps/web/components/account-settings.tsx", "apps/web/components/guest-portal.tsx", "apps/web/components/service-worker-register.tsx", "apps/web/lib/api.ts", "apps/web/app/layout.tsx"].map((relative) => fs.readFileSync(path.join(root, relative), "utf8")).join("\n");
 if (webSource.includes("vibevenue-admin-token")) { console.error("Token administrativo persistente no navegador voltou a ser utilizado."); failures += 1; }

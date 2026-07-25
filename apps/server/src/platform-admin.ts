@@ -280,7 +280,7 @@ export async function settlePlatformInvoice(input: { actorUserId: string; invoic
   } finally { client.release(); }
 }
 
-export async function resetPlatformUserPassword(input: { actorUserId: string; email: string; password?: string }): Promise<{ userId: string; email: string; name: string; temporaryPassword: string }> {
+export async function resetPlatformUserPassword(input: { actorUserId: string; email: string; password?: string | undefined }): Promise<{ userId: string; email: string; name: string; temporaryPassword: string }> {
   const password = input.password ?? temporaryPassword();
   const client = await getPool().connect();
   try {

@@ -90,7 +90,7 @@ export async function createTeamMember(input: { organizationId: string; actorRol
   } finally { client.release(); }
 }
 
-export async function updateTeamMember(input: { organizationId: string; actorUserId: string; actorRole: Role; targetUserId: string; name?: string; role?: Role; active?: boolean }): Promise<TeamMember> {
+export async function updateTeamMember(input: { organizationId: string; actorUserId: string; actorRole: Role; targetUserId: string; name?: string | undefined; role?: Role | undefined; active?: boolean | undefined }): Promise<TeamMember> {
   const client = await getPool().connect();
   try {
     await client.query("BEGIN");

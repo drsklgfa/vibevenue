@@ -411,7 +411,7 @@ export async function setMusicStatus(itemId: string, venueId: string, status: st
       [venueId, itemId, updated.rows[0].youtube_id ?? null]);
   }
 }
-export async function setPlayback(venueId: string, input: { state: "idle" | "playing" | "paused"; currentTime: number; volume: number; itemId?: string | null; videoId?: string | null }): Promise<PlaybackState> {
+export async function setPlayback(venueId: string, input: { state: "idle" | "playing" | "paused"; currentTime: number; volume: number; itemId?: string | null | undefined; videoId?: string | null | undefined }): Promise<PlaybackState> {
   let itemId = input.itemId ?? null;
   let videoId = input.videoId ?? null;
   if (itemId) {
@@ -696,7 +696,7 @@ export async function createVenue(organizationId: string, input: { name: string;
     throw error;
   } finally { client.release(); }
 }
-export async function updateVenue(organizationId: string, venueId: string, input: { name?: string; city?: string; description?: string; modules?: VenueModule[]; theme?: Record<string,string> }): Promise<Venue> {
+export async function updateVenue(organizationId: string, venueId: string, input: { name?: string | undefined; city?: string | undefined; description?: string | undefined; modules?: VenueModule[] | undefined; theme?: Record<string,string> | undefined }): Promise<Venue> {
   const current = await dbQuery<any>(`SELECT * FROM venues WHERE id=$1 AND organization_id=$2 LIMIT 1`, [venueId, organizationId]);
   if (!current.rows[0]) throw new Error("Estabelecimento não encontrado.");
   const row = current.rows[0];
@@ -722,7 +722,7 @@ export async function createZone(venueId: string, input: { name: string; code: s
     throw error;
   } finally { client.release(); }
 }
-export async function updateZone(venueId: string, zoneId: string, input: { name?: string; code?: string; capacity?: number; isActive?: boolean }): Promise<Zone> {
+export async function updateZone(venueId: string, zoneId: string, input: { name?: string | undefined; code?: string | undefined; capacity?: number | undefined; isActive?: boolean | undefined }): Promise<Zone> {
   const current = await dbQuery<any>(`SELECT * FROM zones WHERE id=$1 AND venue_id=$2 LIMIT 1`, [zoneId, venueId]);
   if (!current.rows[0]) throw new Error("Área não encontrada.");
   const row = current.rows[0];

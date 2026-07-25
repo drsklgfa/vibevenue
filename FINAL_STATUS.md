@@ -58,3 +58,10 @@ A expressão “seguro” não significa invulnerável. A liberação para clien
 ## Decisão de go-live
 
 O sistema só deve receber dados reais quando todos os itens obrigatórios de `docs/operations/GO_LIVE_OWNER_CHECKLIST.md` estiverem marcados e as exceções restantes estiverem registradas em `docs/security/SECURITY_EXCEPTIONS.md` com responsável e prazo.
+
+## Atualização de portfólio e CI
+
+- Os erros de `exactOptionalPropertyTypes` observados no run real foram corrigidos.
+- Foi incluído um workflow dedicado para publicar a demonstração visual no GitHub Pages.
+- A demonstração não depende de infraestrutura externa nem usa dados reais.
+- A release continua classificada como candidata até os novos runs do GitHub Actions concluírem com sucesso.

@@ -1,0 +1,79 @@
+name: portfolio-pages
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "apps/web/**"
+      - "packages/contracts/**"
+      - "package.json"
+      - "package-lock.json"
+      - ".github/workflows/pages.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: github-pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: Build portfolio
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      NEXT_PUBLIC_BASE_PATH: /vibevenue
+      NEXT_PUBLIC_PORTFOLIO_MODE: "true"
+      NEXT_PUBLIC_DISABLE_SERVICE_WORKER: "true"
+      NEXT_PUBLIC_API_URL: https://api.example.invalid
+      NEXT_PUBLIC_REALTIME_URL: https://api.example.invalid
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Setup Node.js
+        uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5.0.0
+        with:
+          node-version: 22.16.0
+          cache: npm
+          package-manager-cache: false
+
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@983d7736d9b0ae728b81ab479565c72886d7745b # v5.0.0
+
+      - name: Install immutable dependencies
+        run: npm ci --include=dev --no-audit --no-fund
+
+      - name: Build static portfolio
+        run: npm run build:web
+
+      - name: Prepare Pages artifact
+        run: |
+          test -f apps/web/out/index.html
+          touch apps/web/out/.nojekyll
+          cp apps/web/out/index.html apps/web/out/404.html
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: apps/web/out
+          include-hidden-files: true
+
+  deploy:
+    name: Deploy portfolio
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    needs: build
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e # v4.0.5

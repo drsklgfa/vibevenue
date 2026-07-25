@@ -1,5 +1,10 @@
 # VibeVenue
 
+[![Quality](https://github.com/drsklgfa/vibevenue/actions/workflows/ci.yml/badge.svg)](https://github.com/drsklgfa/vibevenue/actions/workflows/ci.yml)
+[![Portfolio Pages](https://github.com/drsklgfa/vibevenue/actions/workflows/pages.yml/badge.svg)](https://github.com/drsklgfa/vibevenue/actions/workflows/pages.yml)
+
+**Live portfolio:** https://drsklgfa.github.io/vibevenue/
+
 Plataforma SaaS multiestabelecimentos para atendimento, pedidos, música, experiências interativas, eventos, reservas, fidelidade, mídia, métricas e operação comercial.
 
 ## Áreas do produto
@@ -42,6 +47,17 @@ scripts         build, segurança, backup, dados e operação
 docs            arquitetura, negócio, segurança e runbooks
 .github          CI, CodeQL, dependências e release
 ```
+
+
+## Demonstração no GitHub Pages
+
+O workflow `portfolio-pages` gera um export estático do frontend e publica uma demonstração visual em:
+
+```text
+https://drsklgfa.github.io/vibevenue/
+```
+
+A publicação usa `NEXT_PUBLIC_PORTFOLIO_MODE=true`: os dados são ilustrativos e as prévias de painel, cliente e modo TV funcionam sem banco, Redis ou API. A aplicação SaaS completa continua preparada para implantação separada com backend.
 
 ## Desenvolvimento local
 
@@ -105,6 +121,7 @@ Cadastre os valores diretamente no secret manager e apague o arquivo. Nunca envi
 - [Estado final](FINAL_STATUS.md)
 - [Segurança](SECURITY.md)
 - [Validação](VALIDATION.md)
+- [GitHub Pages](docs/GITHUB_PAGES.md)
 - [Deploy de produção](docs/operations/PRODUCTION_DEPLOYMENT.md)
 - [Ações do proprietário](docs/operations/OWNER_ACTIONS.md)
 - [Checklist de go-live](docs/operations/GO_LIVE_OWNER_CHECKLIST.md)

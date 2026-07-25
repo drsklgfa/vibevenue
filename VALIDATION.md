@@ -38,3 +38,25 @@ Motivo: falhas repetidas `HTTP 503 Service Temporarily Unavailable` do gateway d
 - teste de alertas e contenção;
 - pentest independente e reteste;
 - aprovação jurídica e operacional.
+
+## Correção de CI e GitHub Pages — 2026-07-25
+
+Aprovado localmente:
+
+- `validate:lockfile`;
+- `validate:source`;
+- `validate:semantic-offline` em 65 arquivos TypeScript/TSX;
+- `validate:render`;
+- varredura de secrets em 201 arquivos;
+- parsing de JSON e YAML;
+- estrutura do workflow `portfolio-pages`;
+- compatibilidade de `basePath`, manifesto, ícones e navegação.
+
+Pendente de evidência externa após o próximo push:
+
+- `npm ci` no GitHub Actions;
+- build real;
+- testes, lint e smoke;
+- deploy real do GitHub Pages.
+
+A instalação nesta sessão foi interrompida por `HTTP 503` do gateway de pacotes ao baixar `zod-validation-error-4.0.2.tgz`.
