@@ -1,3 +1,12 @@
+
+## 1.0.1-ci-fix — 2026-07-25
+
+- Updated Next.js to 16.2.11 to address the high-severity production audit finding.
+- Forced Sharp 0.35.3 across the dependency tree.
+- Updated pinned checkout and CodeQL actions.
+- Made CodeQL analysis portable without requiring repository code-scanning upload.
+- Replaced dependency-review with a portable immutable-install and production-audit workflow.
+- Revalidated lockfile, source, semantic checks, Render blueprints, repository secret scan, CSP and backup cryptography.
 # Changelog
 
 ## Candidato final seguro 1.0.0 — 25/07/2026
