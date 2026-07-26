@@ -696,11 +696,13 @@ export async function createVenue(organizationId: string, input: { name: string;
     throw error;
   } finally { client.release(); }
 }
-export async function updateVenue(organizationId: string, venueId: string, input: { name?: string | undefined; city?: string | undefined; description?: string | undefined; modules?: VenueModule[] | undefined; theme?: Record<string,string> | undefined }): Promise<Venue> {
+type VenueThemePatch = { primary?: string | undefined; accent?: string | undefined; surface?: string | undefined };
+export async function updateVenue(organizationId: string, venueId: string, input: { name?: string | undefined; city?: string | undefined; description?: string | undefined; modules?: VenueModule[] | undefined; theme?: VenueThemePatch | undefined }): Promise<Venue> {
   const current = await dbQuery<any>(`SELECT * FROM venues WHERE id=$1 AND organization_id=$2 LIMIT 1`, [venueId, organizationId]);
   if (!current.rows[0]) throw new Error("Estabelecimento não encontrado.");
   const row = current.rows[0];
-  const theme = { ...json<Record<string,string>>(row.theme, {}), ...(input.theme ?? {}) };
+  const themePatch = Object.fromEntries(Object.entries(input.theme ?? {}).filter((entry): entry is [string, string] => typeof entry[1] === "string"));
+  const theme = { ...json<Record<string,string>>(row.theme, {}), ...themePatch };
   const result = await dbQuery<any>(`UPDATE venues SET name=$3,city=$4,description=$5,is_active=$6,modules=$7::jsonb,theme=$8::jsonb WHERE id=$1 AND organization_id=$2 RETURNING *`,
     [venueId, organizationId, input.name ?? row.name, input.city ?? row.city, input.description ?? row.description, row.is_active, JSON.stringify(input.modules ?? json(row.modules, [])), JSON.stringify(theme)]);
   return venueRow(result.rows[0]);

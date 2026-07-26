@@ -12,12 +12,13 @@ c194149ece62aaf40e9aa8dc9b5118c1051693a44330e89a42f2b3599dd17d6b  ./.github/work
 0bb01e3672d6f52656b41643f98e17dbcbe6214249d8784d0ddc796223ea1efd  ./.gitignore
 177d20030d4dcc37eae9ef92865ec54dadce60e8f19e9a34a5d4f37502195a36  ./.node-version
 6e55aa84f7394184d4e5b26e38bbc5dcb099de321e5ceca2ddad0474a2a66ec5  ./.npmrc
-57641ede3338d5cc084c8c1b7d466b0386328e7379045f971cd78c140078aa8d  ./CHANGELOG.md
+9d0c170d5194be033b19361ed92727add1adfa0bee6c9f4a1594d6fbf37b7459  ./CHANGELOG.md
 51ae7758e03ac5431f4a0c06a223a00fc0d43bea26085f22f2b977d69f1ec844  ./CHECKPOINT-02-VALIDATION.txt
 5a6b7ed9258f8931eb1628b979069b3656cdff73967b57fe0981ee4fde0f454b  ./CHECKPOINT-03-VALIDATION.txt
 97ce5775cfdb15eaf26cb7dd657f191c478fc9e0f59ec0b6c22c53bd9bc8303d  ./CHECKPOINT-04-VALIDATION.txt
 773d0630da06f1bffaa5cf7277642b7770711b6df510e990677f7ac3a11fd5e2  ./CHECKPOINT-05-VALIDATION.txt
 45ca25ebaa92c028368d857e22d8fcc5c91136c038e84146626ee36325c79401  ./CHECKPOINT-06-VALIDATION.txt
+645f732122a2f9b2c1e58cab144025f8831f3177e7b6ed8ceeef2c7f73d3a1aa  ./CHECKPOINT-08-CI-PAGES-FIX.txt
 96ea5c98de6a089df4f8de80fdfa8562d959ef9abfdb59d883c41de0fd5d098c  ./CHECKPOINT.json
 bc22dcaab5476c75097e6aed9a2ea75b78bffa9098e8437cb13d41785f7279d5  ./CONTRIBUTING.md
 1cffc4069faa10854e36e050b456582dfc73c03bcd73d9b7bc154004db5af3f1  ./FINAL-VALIDATION.txt
@@ -60,7 +61,7 @@ d798dcdc66a7e243aff7d51c3ed5c7c168c59235c1e2d6b84ed080e98c813b26  ./apps/server/
 57235b72081c5865a659130c36ba34aa84fbc4ded1eac6af8015de169675f67b  ./apps/server/src/plans.ts
 dcaf4e4367dc5aa50a80a4d5c674f1b1b07775883ca487b4e0d9155b90ded67f  ./apps/server/src/platform-admin.test.ts
 ff10cd22218e9ef30dc6debddccbbcfb3a429060c73d288aeacbd3eace9eae6a  ./apps/server/src/platform-admin.ts
-5543e16023f35f12b110a9be8bc7ab77e8c83953f1c5f712769251fed37e11f2  ./apps/server/src/platform.ts
+e8a73d07d23bee443387cd73f9f432a33ff062881ebed429b021741a89b4b53d  ./apps/server/src/platform.ts
 b41a0fc59159ada648365dffa569094a1c646862b90e45b3e527845125212701  ./apps/server/src/rotate-encryption-key-cli.ts
 e9e34f1f60ac6216b2b67489f0713888f2b6e9b6b907feacc136593e17f13535  ./apps/server/src/security-events.ts
 4faa7b52359f1f3f9b2fe0ffa4ab27af62a7f708007e652c83323d437da6d985  ./apps/server/src/security.test.ts
@@ -83,7 +84,7 @@ ebfe6720787786ed3df8e8b12b125daf6792b6da221c38695b95e633ee52d90c  ./apps/web/app
 1d56726554a1c91f320bd0f8895faba76a623471eebf5bf66e5a2774a05ad907  ./apps/web/components/admin-login.tsx
 428b22a271d735151899fc1fa4b29182e2b27f949adde9269c0f254422387eab  ./apps/web/components/app-shell.tsx
 f74905f8ffd283939bc9d81ff6e6026195f33cf731b368441057ac1ebc074b5f  ./apps/web/components/guest-portal.tsx
-85cf699bdbe122407d3f27cc137daf0871abd59e451a8c207d27039a332d2424  ./apps/web/components/landing.tsx
+492d36cf605895d718df812900faac8afd2c2c66c93dc61b74ff7be721b00719  ./apps/web/components/landing.tsx
 4265f4f3aa95fc7d12bcbbe7d60b80bfed5a2f650d719e3107a8e547ad1bfe15  ./apps/web/components/platform-console.tsx
 ee0aef8f90323ac5ea3211581cd3cc11ac875628c8b9cd087af754ef7ba10570  ./apps/web/components/portfolio-preview.tsx
 1f9e5392aa2be694866a525320f37a4d112aaf1caf8f42abe9c8d409a2cda26d  ./apps/web/components/service-worker-register.tsx

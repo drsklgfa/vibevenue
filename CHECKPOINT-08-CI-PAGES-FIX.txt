@@ -1,0 +1,26 @@
+VibeVenue - Checkpoint 08: CI + GitHub Pages fix 2
+Data: 25/07/2026
+
+Falhas reproduzidas pelos logs reais do GitHub Actions:
+1. portfolio-pages: landing.tsx usava uma tupla inferida como união ampla e o valor de key podia ser componente/undefined.
+2. quality: updateVenue recebia theme com propriedades opcionais, incompatível com Record<string,string>.
+
+Correções:
+- Features da landing migradas para objetos imutáveis { Icon, title, text }.
+- Patch de tema tipado explicitamente e filtrado antes da mesclagem com o tema persistido.
+
+Validações locais executadas:
+- validate:lockfile
+- validate:source
+- validate:semantic-offline
+- validate:render
+- security:scan-repository
+- security:test-static
+- security:test-backup-crypto
+- parsing JSON/YAML
+- manifesto SHA-256
+- extração limpa do ZIP
+
+Limitação do ambiente:
+- npm ci local bloqueado por HTTP 503 do gateway no pacote zod-validation-error@4.0.2.
+- Nos logs do GitHub, npm ci concluiu normalmente; o próximo push executará a comprovação real do pipeline.

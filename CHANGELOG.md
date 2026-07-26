@@ -1,3 +1,11 @@
+## 1.0.0-ci-pages-fix-2 - 2026-07-25
+
+- Corrige a tipagem das funcionalidades da landing page usando objetos imutáveis com chaves textuais estáveis.
+- Normaliza o patch de tema do estabelecimento antes da mesclagem, removendo valores `undefined`.
+- Resolve os erros reais encontrados nos workflows `quality` e `portfolio-pages` do commit `d208b93`.
+- Revalida os 65 arquivos TypeScript/TSX, segurança estrutural, Blueprints, CSP e criptografia de backup.
+
+
 ## 1.0.0-ci-pages-fix - 2026-07-25
 
 - Corrige incompatibilidades de `exactOptionalPropertyTypes` detectadas pelo build real do GitHub Actions.
