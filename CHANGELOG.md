@@ -1,3 +1,11 @@
+## 1.0.0-ci-pages-fix-3 - 2026-07-26
+
+- Marca a metadata route `manifest.webmanifest` como `force-static` para exportação estática do Next.js 16.2.11.
+- Corrige a falha compartilhada pelos workflows `quality` e `portfolio-pages` após compilação e TypeScript bem-sucedidos.
+- Mantém o manifesto compatível com o caminho `/vibevenue` do GitHub Pages.
+- Revalida lockfile, fonte, semântica TypeScript offline, Render, secrets, CSP e criptografia de backup.
+
+
 ## 1.0.0-ci-pages-fix-2 - 2026-07-25
 
 - Corrige a tipagem das funcionalidades da landing page usando objetos imutáveis com chaves textuais estáveis.

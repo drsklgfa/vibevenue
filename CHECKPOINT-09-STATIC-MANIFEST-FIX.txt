@@ -1,0 +1,27 @@
+VibeVenue - Checkpoint 09: static manifest export fix
+Data: 26/07/2026
+
+Falha reproduzida pelos logs reais do GitHub Actions:
+- quality e portfolio-pages concluíram npm ci, contratos, compilação e TypeScript.
+- Ambos pararam na coleta de dados de /manifest.webmanifest durante output: export.
+- Next.js 16.2.11 exigiu marcação explícita da metadata route como estática.
+
+Correção:
+- apps/web/app/manifest.ts agora exporta dynamic = "force-static".
+- A rota do manifesto permanece compatível com NEXT_PUBLIC_BASE_PATH=/vibevenue.
+
+Validações locais executadas:
+- validate:lockfile
+- validate:source
+- validate:semantic-offline
+- validate:render
+- security:scan-repository
+- security:test-static
+- security:test-backup-crypto
+- parsing JSON/YAML
+- manifesto SHA-256
+- extração limpa do ZIP
+
+Limitação do ambiente:
+- npm ci local foi bloqueado por HTTP 503 do gateway no pacote zod-validation-error@4.0.2.
+- Nos logs do GitHub, npm ci, compilação e TypeScript concluíram; a falha isolada do manifesto foi corrigida.
