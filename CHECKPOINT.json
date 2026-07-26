@@ -1,13 +1,13 @@
 {
   "project": "VibeVenue",
-  "release": "1.0.0-ci-pages-fix-4",
+  "release": "1.0.0-ci-pages-fix-5",
   "date": "2026-07-26",
-  "kind": "complete-source-ci-pages-postgres-candidate",
+  "kind": "complete-source-ci-pages-tenant-test-candidate",
   "baseCheckpoint": "security-07",
   "securityBaseline": "AI Secure Project Blueprint",
   "implementationComplete": true,
   "productionApproved": false,
-  "status": "postgres-migration-fix-applied-awaiting-github-rerun",
+  "status": "tenant-music-test-contract-fix-applied-awaiting-github-rerun",
   "localValidated": [
     "lockfile-origin",
     "offline-source-and-semantic-validation",
@@ -51,7 +51,7 @@
   },
   "latestLocalValidation": [
     "lockfile-validation",
-    "source-validation-with-postgres-reserved-identifier-regression",
+    "source-validation-with-explicit-cross-tenant-music-rejection",
     "semantic-offline-65-ts-tsx",
     "render-blueprints",
     "repository-secret-scan",

@@ -1,3 +1,11 @@
+## 1.0.0-ci-pages-fix-5 - 2026-07-26
+
+- Corrige a expectativa do teste cross-tenant de música para exigir rejeição explícita ao usar um item de outra unidade.
+- Mantém a verificação de que o registro estrangeiro permanece com status `pending`.
+- Preserva o comportamento seguro de `setMusicStatus`, que retorna erro em vez de simular sucesso para uma atualização bloqueada.
+- Adiciona validação offline para impedir que o teste volte a aceitar silenciosamente uma tentativa cross-tenant.
+
+
 ## 1.0.0-ci-pages-fix-4 - 2026-07-26
 
 - Corrige a migração PostgreSQL de `playback_state`, tratando `current_time` como identificador SQL explícito (`"current_time"`).

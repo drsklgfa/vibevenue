@@ -79,6 +79,8 @@ const platform = fs.readFileSync(path.join(root, "apps/server/src/platform.ts"),
 if (!platform.includes("requireVenueModule") || !platform.includes('enabled.has("orders")') || !platform.includes("normalizeCustomerKey")) { console.error("Bloqueio de módulos ou identificação estável do cliente ausente."); failures += 1; }
 if (!platform.includes("pg_advisory_xact_lock") || !platform.includes("INTERVAL '30 seconds'") || !platform.includes("INTERVAL '5 minutes'")) { console.error("Controles de concorrência e deduplicação ausentes."); failures += 1; }
 if (platform.includes("state,current_time") || platform.includes(",current_time=")) { console.error("SQL de reprodução voltou a usar current_time sem aspas."); failures += 1; }
+const tenantIsolationTest = fs.readFileSync(path.join(root, "apps/server/src/tenant-isolation.integration.test.ts"), "utf8");
+if (!tenantIsolationTest.includes('expect(setMusicStatus(ids.musicB, ids.venueA, "approved")).rejects.toThrow')) { console.error("Teste cross-tenant de música não exige rejeição explícita."); failures += 1; }
 const runtime = fs.readFileSync(path.join(root, "apps/server/src/index.ts"), "utf8");
 if (!runtime.includes("allowRequest") || !runtime.includes("startMaintenance")) { console.error("Proteção WebSocket ou manutenção periódica ausente."); failures += 1; }
 const adminDashboard = fs.readFileSync(path.join(root, "apps/web/components/admin-dashboard.tsx"), "utf8");

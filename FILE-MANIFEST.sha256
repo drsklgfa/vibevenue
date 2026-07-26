@@ -12,7 +12,7 @@ c194149ece62aaf40e9aa8dc9b5118c1051693a44330e89a42f2b3599dd17d6b  ./.github/work
 0bb01e3672d6f52656b41643f98e17dbcbe6214249d8784d0ddc796223ea1efd  ./.gitignore
 177d20030d4dcc37eae9ef92865ec54dadce60e8f19e9a34a5d4f37502195a36  ./.node-version
 6e55aa84f7394184d4e5b26e38bbc5dcb099de321e5ceca2ddad0474a2a66ec5  ./.npmrc
-d7b954347660ee8b2598e9d97993cb69ab692ff7e0142de4b5cdd9ce502dd54d  ./CHANGELOG.md
+97a382f4e333feaff62e8a55b99ffebed7603b9841ac78829c1d19a12118c8a9  ./CHANGELOG.md
 51ae7758e03ac5431f4a0c06a223a00fc0d43bea26085f22f2b977d69f1ec844  ./CHECKPOINT-02-VALIDATION.txt
 5a6b7ed9258f8931eb1628b979069b3656cdff73967b57fe0981ee4fde0f454b  ./CHECKPOINT-03-VALIDATION.txt
 97ce5775cfdb15eaf26cb7dd657f191c478fc9e0f59ec0b6c22c53bd9bc8303d  ./CHECKPOINT-04-VALIDATION.txt
@@ -21,7 +21,8 @@ d7b954347660ee8b2598e9d97993cb69ab692ff7e0142de4b5cdd9ce502dd54d  ./CHANGELOG.md
 645f732122a2f9b2c1e58cab144025f8831f3177e7b6ed8ceeef2c7f73d3a1aa  ./CHECKPOINT-08-CI-PAGES-FIX.txt
 33598877a4762f36573ae948c592893e972bf6b39a1f138606d7394738682a3c  ./CHECKPOINT-09-STATIC-MANIFEST-FIX.txt
 c27e0d9202aed6b5a2dd63e9c816a2844f05ab384d0636ada541504cdde98cef  ./CHECKPOINT-10-POSTGRES-MIGRATION-FIX.txt
-c753dec8b7291018c62638dd3f1dde89b3dab864be8fae4f1ff81aa025cfd926  ./CHECKPOINT.json
+b0e744552cfa6dcb53210f629b87b527bccf12b272b96eefa28f2d59048d1726  ./CHECKPOINT-11-TENANT-MUSIC-TEST-FIX.txt
+195a7086ac5628c1180fe73b38bbc5c8e8f128816711e3e873263053ae78c404  ./CHECKPOINT.json
 bc22dcaab5476c75097e6aed9a2ea75b78bffa9098e8437cb13d41785f7279d5  ./CONTRIBUTING.md
 1cffc4069faa10854e36e050b456582dfc73c03bcd73d9b7bc154004db5af3f1  ./FINAL-VALIDATION.txt
 01c17134fee7e5f56571fb47b94fbeb12206830fa18e0c5378bda1fc63caf1f7  ./FINAL_STATUS.md
@@ -72,7 +73,7 @@ e9e34f1f60ac6216b2b67489f0713888f2b6e9b6b907feacc136593e17f13535  ./apps/server/
 0a991b45d2b31fe0dbe33703c82d20dcf6647bef9a28afd97c1113eec487b5c1  ./apps/server/src/session-policy.ts
 32102c176ed7ebc80ff21bbb6cce01332cc2dba6926596bf8c26938f3693fb64  ./apps/server/src/socket.ts
 09b28cc040a571ac6c4e7681681dc70be0aa551527d599bbcb9e3a1c8f205624  ./apps/server/src/storage.ts
-b229f5c64f1c737ee10e636a8f0268d9b19b2a85e40e1d44f4267561a7a20125  ./apps/server/src/tenant-isolation.integration.test.ts
+2e63bd20b186cfb67a0a0535c6cb433d913d3437d303760f7ed3ccf54958f9df  ./apps/server/src/tenant-isolation.integration.test.ts
 924017f62147046ef72db4b8106c4e08847a925bec5e456977c7aefb33eb3fd9  ./apps/server/tsconfig.json
 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855  ./apps/server/uploads/.gitkeep
 6faada07ab446131970b6edcd7d39e5d000d973eb4502e9d050ed86be7cb8952  ./apps/server/vitest.config.ts
@@ -198,7 +199,7 @@ ecc6f00dc2623edf7e1d72b8578de2374cac7b451e110d0eb098638583993bb2  ./scripts/test
 ecda9e5dbc4c06d935e80e644f9c22c217d92ea98d4cebc1fdc70bd0a9ac5dd2  ./scripts/validate-lockfile.mjs
 283211b5ba1ede45a35e6b530cfbf323f504d4b54d757f87c1cf3d1566306333  ./scripts/validate-render.mjs
 8143ee19a7c294ade49f05737ed0abe79735d7dda639ccb05de93244246ce718  ./scripts/validate-semantic-offline.mjs
-42556c0e24f57d92a3c00eeadb0a34a641c6b912d534fb5c2e26c43b854f9b88  ./scripts/validate-source.mjs
+6b503d5c62b6463fd68dd5393ecca443d062d86df1ff5923b2d5b58718408944  ./scripts/validate-source.mjs
 556273cac937e653301cdaa70a420567fba972a07b482ae1bbb117074052a659  ./scripts/verify-artifacts.mjs
 2d033e341066c54d01e00cb6075805ef19140a48658d8286da8f32649873514f  ./scripts/verify-environment.mjs
 7364bbfb089f7c859a4a047792110e328854caac84434ba57f22993be6432b35  ./tsconfig.base.json

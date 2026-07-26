@@ -53,7 +53,9 @@ suite("isolamento multiempresa com PostgreSQL real", () => {
 
   it("não altera objetos de outra unidade usando um ID válido", async () => {
     await expect(updateZone(ids.venueA, ids.zoneB, { name: "Cross tenant" })).rejects.toThrow();
-    await setMusicStatus(ids.musicB, ids.venueA, "approved");
+    await expect(setMusicStatus(ids.musicB, ids.venueA, "approved")).rejects.toThrow(
+      "Música não encontrada ou mudança de status não permitida."
+    );
     const result = await dbQuery<{ status: string }>(`SELECT status FROM music_items WHERE id=$1`, [ids.musicB]);
     expect(result.rows[0]?.status).toBe("pending");
   });

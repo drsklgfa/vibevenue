@@ -1,0 +1,33 @@
+VibeVenue - Checkpoint 11: cross-tenant music test contract fix
+Data: 26/07/2026
+
+Falha reproduzida pelos logs reais do GitHub Actions:
+- o workflow quality concluiu instalação, validações, audit, SBOM, build e typecheck;
+- os contratos passaram 26 testes;
+- 56 testes do servidor passaram;
+- apenas o cenário cross-tenant de música falhou, duplicado nas suítes src e dist geradas pelo build.
+
+Causa raiz:
+- setMusicStatus protege corretamente venue_id e lança erro quando o item pertence a outra unidade;
+- o teste antigo chamava a função sem esperar rejeição, embora depois verificasse corretamente que o status permaneceu pending;
+- a falha era de contrato do teste, não da proteção multiempresa.
+
+Correção:
+- o teste agora exige rejects.toThrow com a mensagem de bloqueio;
+- a consulta posterior continua provando que o objeto estrangeiro não foi alterado;
+- o serviço não foi enfraquecido e continua falhando de forma explícita em tentativas cross-tenant;
+- validate-source.mjs agora rejeita a regressão para um teste que aceite silenciosamente a chamada.
+
+Validações locais previstas neste checkpoint:
+- validate:lockfile
+- validate:source
+- validate:semantic-offline
+- validate:render
+- security:scan-repository
+- security:test-static
+- security:test-backup-crypto
+- manifesto SHA-256
+- extração limpa do ZIP
+
+Validação externa pendente:
+- novo workflow quality com PostgreSQL 17 para executar as suítes src e dist geradas pelo build.
