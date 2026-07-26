@@ -1,3 +1,12 @@
+## 1.0.0-ci-pages-fix-7 - 2026-07-26
+
+- Corrige os quatro erros objetivos do ESLint encontrados depois que os 86 testes passaram.
+- Substitui a regex de caracteres de controle por sanitização baseada em código Unicode, preservando a limpeza do User-Agent.
+- Mantém a assinatura de middleware de erro do Express e marca explicitamente o parâmetro `next` como intencional.
+- Reescreve o encerramento do scanner ClamAV sem expressão ternária isolada e torna `itemId` constante no estado de reprodução.
+- Adiciona validação offline de regressão para os quatro pontos corrigidos.
+
+
 ## 1.0.0-ci-pages-fix-6 - 2026-07-26
 
 - Adiciona testes reais ao workspace web para navegação e normalização de `basePath`.

@@ -652,7 +652,8 @@ export function configureHttp(app: Express, io: Server): void {
     return response.json({ ok: true });
   }));
 
-  app.use((error: unknown, request: Request, response: Response, _next: NextFunction) => {
+  app.use((error: unknown, request: Request, response: Response, next: NextFunction) => {
+    void next;
     const correlationId = requestId(request);
     if (error instanceof HttpError) return response.status(error.status).json({ ok: false, message: error.message, requestId: correlationId });
     const details = error as { name?: string; code?: string; message?: string };

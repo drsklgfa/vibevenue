@@ -81,6 +81,16 @@ if (!platform.includes("pg_advisory_xact_lock") || !platform.includes("INTERVAL 
 if (platform.includes("state,current_time") || platform.includes(",current_time=")) { console.error("SQL de reprodução voltou a usar current_time sem aspas."); failures += 1; }
 const tenantIsolationTest = fs.readFileSync(path.join(root, "apps/server/src/tenant-isolation.integration.test.ts"), "utf8");
 if (!tenantIsolationTest.includes('expect(setMusicStatus(ids.musicB, ids.venueA, "approved")).rejects.toThrow')) { console.error("Teste cross-tenant de música não exige rejeição explícita."); failures += 1; }
+const authSourceForLint = fs.readFileSync(path.join(root, "apps/server/src/auth.ts"), "utf8");
+if (authSourceForLint.includes("/[\\u0000-\\u001f\\u007f]/")) { console.error("Sanitização de User-Agent voltou a usar regex bloqueada pelo ESLint."); failures += 1; }
+if (!authSourceForLint.includes("code < 32 || code === 127")) { console.error("Sanitização segura de caracteres de controle ausente."); failures += 1; }
+const httpSourceForLint = fs.readFileSync(path.join(root, "apps/server/src/http.ts"), "utf8");
+if (!httpSourceForLint.includes("void next;")) { console.error("Assinatura do middleware de erro não marca next como intencional."); failures += 1; }
+const mediaSecuritySourceForLint = fs.readFileSync(path.join(root, "apps/server/src/media-security.ts"), "utf8");
+if (mediaSecuritySourceForLint.includes("error ? reject(error) : resolve(result!)")) { console.error("Callback do ClamAV voltou a usar expressão ternária isolada."); failures += 1; }
+if (!mediaSecuritySourceForLint.includes("if (error) reject(error);")) { console.error("Fluxo explícito de erro do ClamAV ausente."); failures += 1; }
+if (!mediaSecuritySourceForLint.includes("sanitizeScannerDetails(response)")) { console.error("Resposta do ClamAV voltou a depender de regex com caracteres de controle."); failures += 1; }
+if (!platform.includes("const itemId = input.itemId ?? null;")) { console.error("itemId do playback não está declarado como constante."); failures += 1; }
 const runtime = fs.readFileSync(path.join(root, "apps/server/src/index.ts"), "utf8");
 if (!runtime.includes("allowRequest") || !runtime.includes("startMaintenance")) { console.error("Proteção WebSocket ou manutenção periódica ausente."); failures += 1; }
 const adminDashboard = fs.readFileSync(path.join(root, "apps/web/components/admin-dashboard.tsx"), "utf8");

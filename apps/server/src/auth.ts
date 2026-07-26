@@ -31,7 +31,11 @@ function bearer(request: Request): string | null {
   return value.startsWith("Bearer ") ? value.slice(7).trim() : null;
 }
 function cleanUserAgent(value: string | undefined): string {
-  return (value ?? "Navegador não identificado").replace(/[\u0000-\u001f\u007f]/g, " ").trim().slice(0, 300) || "Navegador não identificado";
+  const sanitized = Array.from(value ?? "Navegador não identificado", (character) => {
+    const code = character.charCodeAt(0);
+    return code < 32 || code === 127 ? " " : character;
+  }).join("");
+  return sanitized.trim().slice(0, 300) || "Navegador não identificado";
 }
 function sessionRow(row: any, currentHash: string): AdminSessionInfo {
   return {

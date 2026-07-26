@@ -5,6 +5,13 @@ import { config } from "./config.js";
 export type SupportedImage = "jpeg" | "png" | "webp" | "heic";
 export interface MediaScanResult { clean: boolean; engine: string; details: string; }
 
+function sanitizeScannerDetails(value: string): string {
+  return Array.from(value, (character) => {
+    const code = character.charCodeAt(0);
+    return code === 0 || code === 10 || code === 13 ? " " : character;
+  }).join("").slice(0, 300);
+}
+
 export function detectImageFormat(buffer: Buffer): SupportedImage | null {
   if (buffer.length < 12) return null;
   if (buffer[0] === 0xff && buffer[1] === 0xd8 && buffer[2] === 0xff) return "jpeg";
@@ -31,7 +38,13 @@ async function clamAvScan(buffer: Buffer): Promise<MediaScanResult> {
   return new Promise((resolve, reject) => {
     const socket = net.createConnection({ host: config.clamAvHost, port: config.clamAvPort });
     const chunks: Buffer[] = []; let response = ""; let settled = false;
-    const finish = (error?: Error, result?: MediaScanResult) => { if (settled) return; settled = true; socket.destroy(); error ? reject(error) : resolve(result!); };
+    const finish = (error?: Error, result?: MediaScanResult) => {
+      if (settled) return;
+      settled = true;
+      socket.destroy();
+      if (error) reject(error);
+      else resolve(result!);
+    };
     socket.setTimeout(10_000, () => finish(new Error("Tempo de resposta do antivírus excedido.")));
     socket.on("error", (error) => finish(error));
     socket.on("data", (chunk) => { response += chunk.toString("utf8"); });
@@ -39,7 +52,7 @@ async function clamAvScan(buffer: Buffer): Promise<MediaScanResult> {
       const clean = /stream: OK/i.test(response);
       const infected = /FOUND/i.test(response);
       if (!clean && !infected) { finish(new Error(`Resposta inesperada do antivírus: ${response.slice(0, 160)}`)); return; }
-      finish(undefined, { clean, engine: "clamav", details: clean ? "OK" : response.replace(/[\r\n\0]+/g, " ").slice(0, 300) });
+      finish(undefined, { clean, engine: "clamav", details: clean ? "OK" : sanitizeScannerDetails(response) });
     });
     socket.on("connect", () => {
       socket.write("zINSTREAM\0");

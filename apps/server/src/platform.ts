@@ -412,7 +412,7 @@ export async function setMusicStatus(itemId: string, venueId: string, status: st
   }
 }
 export async function setPlayback(venueId: string, input: { state: "idle" | "playing" | "paused"; currentTime: number; volume: number; itemId?: string | null | undefined; videoId?: string | null | undefined }): Promise<PlaybackState> {
-  let itemId = input.itemId ?? null;
+  const itemId = input.itemId ?? null;
   let videoId = input.videoId ?? null;
   if (itemId) {
     const item = await dbQuery<any>(`SELECT youtube_id FROM music_items WHERE id=$1 AND venue_id=$2 LIMIT 1`, [itemId, venueId]);

@@ -12,7 +12,7 @@ c194149ece62aaf40e9aa8dc9b5118c1051693a44330e89a42f2b3599dd17d6b  ./.github/work
 0bb01e3672d6f52656b41643f98e17dbcbe6214249d8784d0ddc796223ea1efd  ./.gitignore
 177d20030d4dcc37eae9ef92865ec54dadce60e8f19e9a34a5d4f37502195a36  ./.node-version
 6e55aa84f7394184d4e5b26e38bbc5dcb099de321e5ceca2ddad0474a2a66ec5  ./.npmrc
-b1a34f759c8548c322d79cdd0cb5b29ce134a0c06400dc224af72329a732a8b1  ./CHANGELOG.md
+d7a5126ed5a24bf20e6303a341674267945bc68ac9713fbc73a9a7dee18cb4b7  ./CHANGELOG.md
 51ae7758e03ac5431f4a0c06a223a00fc0d43bea26085f22f2b977d69f1ec844  ./CHECKPOINT-02-VALIDATION.txt
 5a6b7ed9258f8931eb1628b979069b3656cdff73967b57fe0981ee4fde0f454b  ./CHECKPOINT-03-VALIDATION.txt
 97ce5775cfdb15eaf26cb7dd657f191c478fc9e0f59ec0b6c22c53bd9bc8303d  ./CHECKPOINT-04-VALIDATION.txt
@@ -23,7 +23,8 @@ b1a34f759c8548c322d79cdd0cb5b29ce134a0c06400dc224af72329a732a8b1  ./CHANGELOG.md
 c27e0d9202aed6b5a2dd63e9c816a2844f05ab384d0636ada541504cdde98cef  ./CHECKPOINT-10-POSTGRES-MIGRATION-FIX.txt
 b0e744552cfa6dcb53210f629b87b527bccf12b272b96eefa28f2d59048d1726  ./CHECKPOINT-11-TENANT-MUSIC-TEST-FIX.txt
 ba536fe1d7022fcb69db7f5b977ab60c8267a7f7d1a41576559eff8afd5a5197  ./CHECKPOINT-12-WEB-VITEST-SUITE-FIX.txt
-d411a46d4915a3c43370c4a9b3a68e8c88d59b8dcbab849c30ef614cdf4f840a  ./CHECKPOINT.json
+2c79472b75055ea14e4ae55b0d1d17507f3485a8e2e7c429238b7b624c0f403e  ./CHECKPOINT-13-ESLINT-FIX.txt
+965939c84e411a9b2f60250373d891a2d60c415163cff3b24e9937359d2d72ba  ./CHECKPOINT.json
 bc22dcaab5476c75097e6aed9a2ea75b78bffa9098e8437cb13d41785f7279d5  ./CONTRIBUTING.md
 1cffc4069faa10854e36e050b456582dfc73c03bcd73d9b7bc154004db5af3f1  ./FINAL-VALIDATION.txt
 01c17134fee7e5f56571fb47b94fbeb12206830fa18e0c5378bda1fc63caf1f7  ./FINAL_STATUS.md
@@ -37,7 +38,7 @@ ade448f042c60f0f341244872a4e129e96939010928c290b50ddb9c10bb83e8d  ./apps/server/
 2f4b73a7abef58f9a600eefd133c341fcfa09ca62f47f6ba6476191532a47e8c  ./apps/server/package.json
 f981d95069660a4350361238cf8af7a8f1a77829da76acad3ab5f952760a7aa4  ./apps/server/src/account-recovery.ts
 d47978d4ab25640d6225202b98e2bb1935e5931f44dbf395742c1e9f70cd84ff  ./apps/server/src/audit.ts
-102ea0ea276bdde08b2dacc44e206e9fecad34b310d7978b54fc1561e31a0f67  ./apps/server/src/auth.ts
+bc2b1208e558f5f69c4b911babf98400771e9f2853ad761770c17383bd894e03  ./apps/server/src/auth.ts
 08d6574ea435d81660b7c39648ba72da7eef7afc8700c6d9e198915281664b24  ./apps/server/src/billing.ts
 bd5e0f85a569257b75003b0d6ecd690411da39dc80244cb23ff7166e7e09d6e4  ./apps/server/src/commercial.ts
 7878676737d7e1b9937d1df6761f0fc199913582784f90436121f8cccce27bf6  ./apps/server/src/config.ts
@@ -47,13 +48,13 @@ a5a19f9f3b552d8612fbe94429231d54f7b7ffec9fecce93af5e258373659548  ./apps/server/
 efaf0f6e1de8bc2395ad094c535595c53fbf89e4bdc5422d5d7d7ca850f90223  ./apps/server/src/email.ts
 dd0e01b793af5c82cd2beae5dd373cfb4193dcb803a5d7c01cf9b94b9cb613c0  ./apps/server/src/encryption.ts
 cb46de3de40dacc37bff60d814567b4982fd02f4e2939f40a7ee6818a6199c84  ./apps/server/src/health.test.ts
-138341b0a21b8091629f0c4fb7fabc13ff1f1f0e51dd7fc10f606140bf65d2d8  ./apps/server/src/http.ts
+4e7c410671047cab5822b1b8baf07dccd3ee792681f4e6e15f43df84373f5367  ./apps/server/src/http.ts
 0bd386372c04da79fb6f8dbc78950ec831dd7142dfe9eb870db2b5a4ba043d33  ./apps/server/src/index.ts
 7df644a9c198c38b26b50fd2a2982dccfc010341f4fe11619cb3f96d6ab5ea58  ./apps/server/src/integrations.ts
 fd674f0ab3b23e61aa4f0de23c8ab2f14b3c57cf535532b513b02d6a86f669b3  ./apps/server/src/logger.ts
 8a30c906c5b74676435c21c0ec6eb6475a3d0ffdc98983878e635be75a97b019  ./apps/server/src/maintenance.ts
 6ef53a69399a4b75698757a29e1782a39006886f18a51b8b650ebfb25211135f  ./apps/server/src/media-security.test.ts
-458713703bb6153af3ffef0fcea2bc3367b1c9372fe190d348e84e6b41425204  ./apps/server/src/media-security.ts
+de7f3c6a34b6d16c27eb5dde1e7a8db261e81a361f913ed25d3501c8a6f72074  ./apps/server/src/media-security.ts
 7659f98b329038a5034f77a09f74e6bda4a3f09676f035d8ca2cf88cde099490  ./apps/server/src/mfa.test.ts
 ffcf31935e9c4c1d23092a1ca45438fc5f2e84ac30b1aebd8920ee8daa9dee79  ./apps/server/src/mfa.ts
 33d86350dafd27485872f46f40937613b715e602e3d20aa3da043d3097badb32  ./apps/server/src/migrate-cli.ts
@@ -65,7 +66,7 @@ d798dcdc66a7e243aff7d51c3ed5c7c168c59235c1e2d6b84ed080e98c813b26  ./apps/server/
 57235b72081c5865a659130c36ba34aa84fbc4ded1eac6af8015de169675f67b  ./apps/server/src/plans.ts
 dcaf4e4367dc5aa50a80a4d5c674f1b1b07775883ca487b4e0d9155b90ded67f  ./apps/server/src/platform-admin.test.ts
 ff10cd22218e9ef30dc6debddccbbcfb3a429060c73d288aeacbd3eace9eae6a  ./apps/server/src/platform-admin.ts
-ba90290f1806c4afd1d9686e54c900a42142f094fc27fe20d888f81f295661e7  ./apps/server/src/platform.ts
+a6e934cf1f6c5129f01682dfdac616a28dbbe0678f25f393eabe777084f21f70  ./apps/server/src/platform.ts
 b41a0fc59159ada648365dffa569094a1c646862b90e45b3e527845125212701  ./apps/server/src/rotate-encryption-key-cli.ts
 e9e34f1f60ac6216b2b67489f0713888f2b6e9b6b907feacc136593e17f13535  ./apps/server/src/security-events.ts
 4faa7b52359f1f3f9b2fe0ffa4ab27af62a7f708007e652c83323d437da6d985  ./apps/server/src/security.test.ts
@@ -201,7 +202,7 @@ ecc6f00dc2623edf7e1d72b8578de2374cac7b451e110d0eb098638583993bb2  ./scripts/test
 ecda9e5dbc4c06d935e80e644f9c22c217d92ea98d4cebc1fdc70bd0a9ac5dd2  ./scripts/validate-lockfile.mjs
 283211b5ba1ede45a35e6b530cfbf323f504d4b54d757f87c1cf3d1566306333  ./scripts/validate-render.mjs
 8143ee19a7c294ade49f05737ed0abe79735d7dda639ccb05de93244246ce718  ./scripts/validate-semantic-offline.mjs
-422e55b7d568eb449cd3f9073d6870235f84f2d48ff3996bde950987099d9107  ./scripts/validate-source.mjs
+2ef57ee87980834bc7d548d51275b1ea2850dfd868378f868ecd81dfc46a671b  ./scripts/validate-source.mjs
 556273cac937e653301cdaa70a420567fba972a07b482ae1bbb117074052a659  ./scripts/verify-artifacts.mjs
 2d033e341066c54d01e00cb6075805ef19140a48658d8286da8f32649873514f  ./scripts/verify-environment.mjs
 7364bbfb089f7c859a4a047792110e328854caac84434ba57f22993be6432b35  ./tsconfig.base.json

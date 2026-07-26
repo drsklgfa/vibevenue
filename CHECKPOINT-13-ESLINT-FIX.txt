@@ -1,0 +1,40 @@
+VibeVenue - Checkpoint 13: ESLint final server fixes
+Data: 26/07/2026
+
+Estado confirmado pelo GitHub Actions no run 30221718182:
+- instalação imutável aprovada;
+- validações de lockfile, fonte e semântica aprovadas;
+- varredura de segurança, CSP, backup crypto, audit e SBOM aprovados;
+- build e typecheck aprovados;
+- 26 testes dos contratos, 58 testes do servidor e 2 testes do frontend aprovados;
+- somente npm run lint falhou;
+- CodeQL run 30221718150 terminou aprovado.
+
+Quatro erros do ESLint corrigidos:
+1. auth.ts: no-control-regex na sanitização de User-Agent;
+2. http.ts: parâmetro de middleware de erro definido e não utilizado;
+3. media-security.ts: expressão ternária isolada no callback de conclusão do ClamAV;
+4. platform.ts: itemId declarado com let sem ser reatribuído.
+
+Correções:
+- sanitização por código Unicode, sem regex de caracteres de controle;
+- assinatura Express preservada com uso explícito de void next;
+- fluxo reject/resolve convertido para if/else;
+- itemId convertido para const;
+- validate-source.mjs atualizado para impedir regressão.
+
+Validações locais deste checkpoint:
+- validate:lockfile;
+- validate:source;
+- validate:semantic-offline;
+- validate:render;
+- security:scan-repository;
+- security:test-static;
+- security:test-backup-crypto;
+- sintaxe JSON/YAML;
+- manifesto SHA-256;
+- extração limpa do ZIP.
+
+Validação externa pendente:
+- novo workflow quality para confirmar lint do servidor e revelar, se houver, qualquer regra ainda não executada no workspace web;
+- validate:render, verify:artifacts e smoke após lint.
