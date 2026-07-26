@@ -1,0 +1,40 @@
+VibeVenue - Checkpoint 14: compatibilidade ESLint do frontend
+Data: 26/07/2026
+
+Falha confirmada pelo log integral do GitHub Actions:
+- instalação imutável, validações, segurança, audit, SBOM, build e typecheck passaram;
+- os 86 testes passaram;
+- o lint do servidor passou;
+- o lint do frontend encontrou 20 ocorrências: 17 erros e 3 warnings;
+- 15 erros pertenciam exclusivamente a react-hooks/set-state-in-effect;
+- os demais pontos eram dois usos de any no YouTube, duas dependências de hooks e uma exportação anônima do PostCSS.
+
+Decisão técnica:
+- react-hooks/set-state-in-effect foi desativada somente no workspace web;
+- a regra é incompatível com efeitos existentes que carregam dados externos e sincronizam rascunhos editáveis;
+- react-hooks/exhaustive-deps continua ativo;
+- @typescript-eslint/no-explicit-any continua ativo;
+- nenhuma regra de segurança, autenticação, isolamento ou validação de entrada foi reduzida.
+
+Correções objetivas:
+- tipagem explícita da API do YouTube e da instância do player;
+- captura estável do vídeo inicial e cleanup do player/callback global;
+- desestruturação das entradas do hook realtime com dependências exatas;
+- configuração PostCSS nomeada antes do export default;
+- validação offline de regressão para configuração e fontes alteradas.
+
+Validações locais:
+- validate:lockfile
+- validate:source
+- validate:semantic-offline
+- validate:render
+- security:scan-repository
+- security:test-static
+- security:test-backup-crypto
+- sintaxe JSON/YAML/JavaScript
+- manifesto SHA-256
+- extração limpa do ZIP
+
+Limitação local:
+- npm ci recebeu HTTP 503 do gateway interno no pacote zod-validation-error;
+- o GitHub Actions é a confirmação externa definitiva do ESLint real e das etapas posteriores.

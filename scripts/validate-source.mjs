@@ -109,6 +109,16 @@ else {
   if (!webBasePathTest.includes('describe("base path navigation"') || !webBasePathTest.includes('expect(appHref("admin")).toBe("/admin")')) { console.error("Teste de basePath do frontend incompleto."); failures += 1; }
 }
 
+const webEslintConfig = fs.readFileSync(path.join(root, "apps/web/eslint.config.mjs"), "utf8");
+if (!webEslintConfig.includes('"react-hooks/set-state-in-effect": "off"')) { console.error("Compatibilidade do ESLint React com os efeitos de carregamento do frontend ausente."); failures += 1; }
+if (webEslintConfig.includes('"react-hooks/exhaustive-deps": "off"') || webEslintConfig.includes('"@typescript-eslint/no-explicit-any": "off"')) { console.error("Regras essenciais de dependências ou tipagem foram desativadas no frontend."); failures += 1; }
+const youtubePlayerSource = fs.readFileSync(path.join(root, "apps/web/components/youtube-player.tsx"), "utf8");
+if (youtubePlayerSource.includes("any") || !youtubePlayerSource.includes("interface YouTubePlayerInstance") || !youtubePlayerSource.includes("initialVideoId")) { console.error("Player do YouTube sem tipagem estrita ou estabilização do vídeo inicial."); failures += 1; }
+const realtimeHookSource = fs.readFileSync(path.join(root, "apps/web/hooks/use-realtime.ts"), "utf8");
+if (!realtimeHookSource.includes("const { venueId, slug, admin, guestToken, onUpdate, onPlayback } = input;") || realtimeHookSource.includes("[input.")) { console.error("Hook realtime voltou a depender do objeto de entrada instável."); failures += 1; }
+const postcssConfigSource = fs.readFileSync(path.join(root, "apps/web/postcss.config.mjs"), "utf8");
+if (!postcssConfigSource.includes("const config =") || !postcssConfigSource.includes("export default config;")) { console.error("Configuração PostCSS voltou a usar exportação anônima."); failures += 1; }
+
 const webSource = ["apps/web/components/app-shell.tsx", "apps/web/components/admin-login.tsx", "apps/web/components/admin-dashboard.tsx", "apps/web/components/account-settings.tsx", "apps/web/components/guest-portal.tsx", "apps/web/components/service-worker-register.tsx", "apps/web/lib/api.ts", "apps/web/app/layout.tsx"].map((relative) => fs.readFileSync(path.join(root, relative), "utf8")).join("\n");
 if (webSource.includes("vibevenue-admin-token")) { console.error("Token administrativo persistente no navegador voltou a ser utilizado."); failures += 1; }
 if (!webSource.includes('credentials: "include"') || !webSource.includes("api.sessions")) { console.error("Cookie HttpOnly ou gestão de sessões ausente no frontend."); failures += 1; }

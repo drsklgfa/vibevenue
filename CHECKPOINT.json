@@ -1,13 +1,13 @@
 {
   "project": "VibeVenue",
-  "release": "1.0.0-ci-pages-fix-7",
+  "release": "1.0.0-ci-pages-fix-8",
   "date": "2026-07-26",
-  "kind": "complete-source-ci-pages-eslint-candidate",
+  "kind": "complete-source-ci-pages-web-eslint-candidate",
   "baseCheckpoint": "security-07",
   "securityBaseline": "AI Secure Project Blueprint",
   "implementationComplete": true,
   "productionApproved": false,
-  "status": "server-eslint-fixes-applied-awaiting-github-rerun",
+  "status": "web-eslint-compatibility-fixes-applied-awaiting-github-rerun",
   "localValidated": [
     "lockfile-origin",
     "offline-source-and-semantic-validation",
@@ -51,7 +51,7 @@
   },
   "latestLocalValidation": [
     "lockfile-validation",
-    "source-validation-with-eslint-regressions",
+    "source-validation-with-web-eslint-regressions",
     "semantic-offline-66-ts-tsx",
     "render-blueprints",
     "repository-secret-scan",
@@ -60,8 +60,8 @@
     "manifest-and-clean-extraction"
   ],
   "externalPending": [
-    "github-quality-rerun-for-eslint-and-post-lint-steps",
-    "web-workspace-eslint-confirmation",
+    "github-quality-rerun-for-web-eslint-and-post-lint-steps",
+    "github-pages-final-deployment-confirmation",
     "independent-production-go-live-validation"
   ]
 }

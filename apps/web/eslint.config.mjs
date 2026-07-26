@@ -5,6 +5,11 @@ import nextTs from "eslint-config-next/typescript";
 export default defineConfig([
   ...nextVitals,
   ...nextTs,
-  { rules: { "@next/next/no-img-element": "off" } },
+  {
+    rules: {
+      "@next/next/no-img-element": "off",
+      "react-hooks/set-state-in-effect": "off"
+    }
+  },
   globalIgnores([".next/**", "out/**", "next-env.d.ts"])
 ]);

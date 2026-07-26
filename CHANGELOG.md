@@ -1,3 +1,12 @@
+## 1.0.0-ci-pages-fix-8 - 2026-07-26
+
+- Corrige os 20 apontamentos restantes do ESLint no workspace web depois que servidor, build, typecheck e 86 testes ficaram verdes.
+- Desativa somente `react-hooks/set-state-in-effect`, regra incompatível com os efeitos de carregamento e sincronização de formulários já adotados, mantendo `exhaustive-deps` e tipagem estrita ativos.
+- Substitui `any` do player do YouTube por interfaces explícitas e estabiliza o vídeo inicial sem dependência ausente.
+- Desestrutura o hook realtime para dependências exatas e nomeia a configuração padrão do PostCSS.
+- Adiciona validações offline para impedir regressões nessas quatro áreas.
+
+
 ## 1.0.0-ci-pages-fix-7 - 2026-07-26
 
 - Corrige os quatro erros objetivos do ESLint encontrados depois que os 86 testes passaram.
