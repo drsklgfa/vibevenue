@@ -1,0 +1,31 @@
+VibeVenue - Checkpoint 12: frontend Vitest suite fix
+Data: 26/07/2026
+
+Falha confirmada pelo log integral do GitHub Actions:
+- 26 testes dos contratos passaram;
+- 58 testes do servidor passaram;
+- o workspace web executou `vitest run`;
+- como não havia arquivos `*.test.*` ou `*.spec.*`, o Vitest encerrou com código 1;
+- lint, validação Render, artefatos e smoke foram pulados somente por causa desse código de saída.
+
+Correção aplicada:
+- criado `apps/web/lib/base-path.test.ts`;
+- o teste valida navegação absoluta em implantação raiz, normalização de caminhos e rota `/`;
+- o comando permanece `vitest run`, sem `--passWithNoTests`;
+- futuras falhas reais do frontend continuam quebrando o CI;
+- `validate-source.mjs` agora exige pelo menos esta suíte web.
+
+Validações locais:
+- validate:lockfile
+- validate:source
+- validate:semantic-offline
+- validate:render
+- security:scan-repository
+- security:test-static
+- security:test-backup-crypto
+- sintaxe de scripts
+- manifesto SHA-256
+- extração limpa do ZIP
+
+Validação externa pendente:
+- workflow quality completo, incluindo Vitest web, lint, artefatos e smoke.

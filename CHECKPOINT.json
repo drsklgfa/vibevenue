@@ -1,13 +1,13 @@
 {
   "project": "VibeVenue",
-  "release": "1.0.0-ci-pages-fix-5",
+  "release": "1.0.0-ci-pages-fix-6",
   "date": "2026-07-26",
-  "kind": "complete-source-ci-pages-tenant-test-candidate",
+  "kind": "complete-source-ci-pages-web-test-candidate",
   "baseCheckpoint": "security-07",
   "securityBaseline": "AI Secure Project Blueprint",
   "implementationComplete": true,
   "productionApproved": false,
-  "status": "tenant-music-test-contract-fix-applied-awaiting-github-rerun",
+  "status": "web-vitest-suite-added-awaiting-github-rerun",
   "localValidated": [
     "lockfile-origin",
     "offline-source-and-semantic-validation",
@@ -51,8 +51,8 @@
   },
   "latestLocalValidation": [
     "lockfile-validation",
-    "source-validation-with-explicit-cross-tenant-music-rejection",
-    "semantic-offline-65-ts-tsx",
+    "source-validation-with-required-web-test-suite",
+    "semantic-offline-66-ts-tsx",
     "render-blueprints",
     "repository-secret-scan",
     "static-server-csp-test",
@@ -60,7 +60,7 @@
     "manifest-and-clean-extraction"
   ],
   "externalPending": [
-    "github-quality-rerun-with-postgres-17",
+    "github-quality-rerun-with-postgres-17-and-web-vitest",
     "remaining-lint-artifact-smoke-steps-after-tests",
     "independent-production-go-live-validation"
   ]

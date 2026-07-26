@@ -1,3 +1,11 @@
+## 1.0.0-ci-pages-fix-6 - 2026-07-26
+
+- Adiciona testes reais ao workspace web para navegação e normalização de `basePath`.
+- Corrige a falha do Vitest `No test files found, exiting with code 1` após 84 testes existentes terem passado.
+- Mantém o comando `vitest run` estrito, sem usar `--passWithNoTests`, para que falhas futuras continuem interrompendo o CI.
+- Adiciona validação offline para impedir que o frontend volte a ficar sem arquivos de teste.
+
+
 ## 1.0.0-ci-pages-fix-5 - 2026-07-26
 
 - Corrige a expectativa do teste cross-tenant de música para exigir rejeição explícita ao usar um item de outra unidade.

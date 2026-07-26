@@ -92,6 +92,12 @@ const pagesWorkflow = fs.readFileSync(path.join(root, ".github/workflows/pages.y
 if (!pagesWorkflow.includes("NEXT_PUBLIC_BASE_PATH: /vibevenue") || !pagesWorkflow.includes("actions/deploy-pages@") || !pagesWorkflow.includes("apps/web/out")) { console.error("Workflow visual do GitHub Pages incompleto."); failures += 1; }
 const basePathSource = fs.readFileSync(path.join(root, "apps/web/lib/base-path.ts"), "utf8");
 if (!basePathSource.includes("NEXT_PUBLIC_PORTFOLIO_MODE") || !basePathSource.includes("NEXT_PUBLIC_BASE_PATH")) { console.error("Modo portfólio ou basePath do GitHub Pages ausente."); failures += 1; }
+const webBasePathTestPath = path.join(root, "apps/web/lib/base-path.test.ts");
+if (!fs.existsSync(webBasePathTestPath)) { console.error("Suíte Vitest do frontend ausente."); failures += 1; }
+else {
+  const webBasePathTest = fs.readFileSync(webBasePathTestPath, "utf8");
+  if (!webBasePathTest.includes('describe("base path navigation"') || !webBasePathTest.includes('expect(appHref("admin")).toBe("/admin")')) { console.error("Teste de basePath do frontend incompleto."); failures += 1; }
+}
 
 const webSource = ["apps/web/components/app-shell.tsx", "apps/web/components/admin-login.tsx", "apps/web/components/admin-dashboard.tsx", "apps/web/components/account-settings.tsx", "apps/web/components/guest-portal.tsx", "apps/web/components/service-worker-register.tsx", "apps/web/lib/api.ts", "apps/web/app/layout.tsx"].map((relative) => fs.readFileSync(path.join(root, relative), "utf8")).join("\n");
 if (webSource.includes("vibevenue-admin-token")) { console.error("Token administrativo persistente no navegador voltou a ser utilizado."); failures += 1; }
