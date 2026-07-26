@@ -67,6 +67,7 @@ for (const field of ["status TEXT", "billing_email", "monthly_price_cents", "tri
 }
 
 if (!migrations.includes("require_guest_consent BOOLEAN NOT NULL DEFAULT FALSE")) { console.error("Consentimento legal não possui padrão seguro para migrações existentes."); failures += 1; }
+if (!migrations.includes('"current_time" DOUBLE PRECISION NOT NULL DEFAULT 0')) { console.error("Coluna de reprodução usa identificador reservado sem aspas no PostgreSQL."); failures += 1; }
 
 
 const auth = fs.readFileSync(path.join(root, "apps/server/src/auth.ts"), "utf8");
@@ -77,6 +78,7 @@ if (!auth.includes("accepted_privacy_at IS NOT NULL") || !auth.includes("g.priva
 const platform = fs.readFileSync(path.join(root, "apps/server/src/platform.ts"), "utf8");
 if (!platform.includes("requireVenueModule") || !platform.includes('enabled.has("orders")') || !platform.includes("normalizeCustomerKey")) { console.error("Bloqueio de módulos ou identificação estável do cliente ausente."); failures += 1; }
 if (!platform.includes("pg_advisory_xact_lock") || !platform.includes("INTERVAL '30 seconds'") || !platform.includes("INTERVAL '5 minutes'")) { console.error("Controles de concorrência e deduplicação ausentes."); failures += 1; }
+if (platform.includes("state,current_time") || platform.includes(",current_time=")) { console.error("SQL de reprodução voltou a usar current_time sem aspas."); failures += 1; }
 const runtime = fs.readFileSync(path.join(root, "apps/server/src/index.ts"), "utf8");
 if (!runtime.includes("allowRequest") || !runtime.includes("startMaintenance")) { console.error("Proteção WebSocket ou manutenção periódica ausente."); failures += 1; }
 const adminDashboard = fs.readFileSync(path.join(root, "apps/web/components/admin-dashboard.tsx"), "utf8");

@@ -1,3 +1,11 @@
+## 1.0.0-ci-pages-fix-4 - 2026-07-26
+
+- Corrige a migração PostgreSQL de `playback_state`, tratando `current_time` como identificador SQL explícito (`"current_time"`).
+- Atualiza os `INSERT ... ON CONFLICT` de reprodução para usar o mesmo identificador com aspas.
+- Resolve a falha dos testes cross-tenant que ocorria após build e typecheck bem-sucedidos no workflow `quality`.
+- Adiciona validação offline de regressão para impedir o retorno do identificador reservado sem aspas.
+
+
 ## 1.0.0-ci-pages-fix-3 - 2026-07-26
 
 - Marca a metadata route `manifest.webmanifest` como `force-static` para exportação estática do Next.js 16.2.11.

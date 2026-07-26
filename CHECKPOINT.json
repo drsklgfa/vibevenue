@@ -1,13 +1,13 @@
 {
   "project": "VibeVenue",
-  "release": "1.0.0-ci-pages-fix",
-  "date": "2026-07-25",
-  "kind": "complete-source-ci-and-pages-candidate",
+  "release": "1.0.0-ci-pages-fix-4",
+  "date": "2026-07-26",
+  "kind": "complete-source-ci-pages-postgres-candidate",
   "baseCheckpoint": "security-07",
   "securityBaseline": "AI Secure Project Blueprint",
   "implementationComplete": true,
   "productionApproved": false,
-  "status": "ci-fixes-applied-awaiting-github-rerun",
+  "status": "postgres-migration-fix-applied-awaiting-github-rerun",
   "localValidated": [
     "lockfile-origin",
     "offline-source-and-semantic-validation",
@@ -51,16 +51,17 @@
   },
   "latestLocalValidation": [
     "lockfile-validation",
-    "source-validation",
+    "source-validation-with-postgres-reserved-identifier-regression",
     "semantic-offline-65-ts-tsx",
     "render-blueprints",
-    "repository-secret-scan-201-files",
-    "json-yaml-parse",
-    "pages-workflow-structure"
+    "repository-secret-scan",
+    "static-server-csp-test",
+    "backup-aes-gcm-roundtrip",
+    "manifest-and-clean-extraction"
   ],
   "externalPending": [
-    "github-quality-rerun",
-    "github-pages-build-and-deploy",
-    "real-npm-ci-build-test-lint-smoke"
+    "github-quality-rerun-with-postgres-17",
+    "remaining-lint-artifact-smoke-steps-after-tests",
+    "independent-production-go-live-validation"
   ]
 }

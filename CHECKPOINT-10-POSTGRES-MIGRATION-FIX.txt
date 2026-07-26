@@ -1,0 +1,34 @@
+VibeVenue - Checkpoint 10: PostgreSQL playback migration fix
+Data: 26/07/2026
+
+Falha reproduzida pelos logs reais do GitHub Actions:
+- o workflow quality concluiu npm ci, validações, audit, SBOM, build e typecheck;
+- os contratos passaram 26 testes;
+- 48 testes do servidor passaram e 10 foram ignorados;
+- as duas suítes cross-tenant (src e dist) falharam na migração PostgreSQL;
+- PostgreSQL retornou erro 42601: syntax error at or near "current_time".
+
+Causa raiz:
+- CURRENT_TIME é palavra reservada/especial no PostgreSQL;
+- a coluna playback_state.current_time era criada e atualizada sem delimitação de identificador.
+
+Correção:
+- migrations.ts cria a coluna como "current_time";
+- platform.ts usa "current_time" nos INSERTs e cláusulas ON CONFLICT;
+- o contrato TypeScript e o campo público currentTime permanecem inalterados;
+- validate-source.mjs agora rejeita a regressão para SQL sem aspas.
+
+Validações locais executadas:
+- validate:lockfile
+- validate:source
+- validate:semantic-offline
+- validate:render
+- security:scan-repository
+- security:test-static
+- security:test-backup-crypto
+- busca global por ocorrências SQL de current_time
+- manifesto SHA-256
+- extração limpa do ZIP
+
+Validação externa pendente:
+- novo rerun do GitHub Actions com PostgreSQL 17 para executar a migração e as suítes cross-tenant reais.

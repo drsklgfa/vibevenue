@@ -406,8 +406,8 @@ export async function setMusicStatus(itemId: string, venueId: string, status: st
   if (!updated.rows[0]) throw new Error("Música não encontrada ou mudança de status não permitida.");
   if (status === "playing") {
     await dbQuery(`UPDATE music_items SET status='played' WHERE venue_id=$1 AND status='playing' AND id<>$2`, [venueId, itemId]);
-    await dbQuery(`INSERT INTO playback_state(venue_id,music_item_id,video_id,state,current_time,updated_at)
-      VALUES($1,$2,$3,'playing',0,NOW()) ON CONFLICT(venue_id) DO UPDATE SET music_item_id=$2,video_id=$3,state='playing',current_time=0,updated_at=NOW()`,
+    await dbQuery(`INSERT INTO playback_state(venue_id,music_item_id,video_id,state,"current_time",updated_at)
+      VALUES($1,$2,$3,'playing',0,NOW()) ON CONFLICT(venue_id) DO UPDATE SET music_item_id=$2,video_id=$3,state='playing',"current_time"=0,updated_at=NOW()`,
       [venueId, itemId, updated.rows[0].youtube_id ?? null]);
   }
 }
@@ -421,8 +421,8 @@ export async function setPlayback(venueId: string, input: { state: "idle" | "pla
   } else if (videoId && !/^[A-Za-z0-9_-]{6,20}$/.test(videoId)) {
     throw new Error("Identificador de vídeo inválido.");
   }
-  await dbQuery(`INSERT INTO playback_state(venue_id,music_item_id,video_id,state,current_time,volume,updated_at)
-    VALUES($1,$2,$3,$4,$5,$6,NOW()) ON CONFLICT(venue_id) DO UPDATE SET music_item_id=$2,video_id=$3,state=$4,current_time=$5,volume=$6,updated_at=NOW()`,
+  await dbQuery(`INSERT INTO playback_state(venue_id,music_item_id,video_id,state,"current_time",volume,updated_at)
+    VALUES($1,$2,$3,$4,$5,$6,NOW()) ON CONFLICT(venue_id) DO UPDATE SET music_item_id=$2,video_id=$3,state=$4,"current_time"=$5,volume=$6,updated_at=NOW()`,
     [venueId, itemId, videoId, input.state, Math.max(0, input.currentTime), Math.max(0, Math.min(100, input.volume))]);
   return playback(venueId);
 }
